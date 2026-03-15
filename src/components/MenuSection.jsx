@@ -24,8 +24,8 @@ export default function MenuSection() {
               onClick={() => setActive(section.id)}
               className={`rounded-2xl border px-4 py-4 text-left transition ${
                 isActive
-                  ? "border-fire bg-ember text-white shadow-glow"
-                  : "border-stone-700/80 bg-black/30 text-stone-300 hover:border-gold/60"
+                  ? "border-brand-red bg-ember text-white shadow-glow"
+                  : "border-stone-700/80 bg-black/30 text-stone-300 hover:border-brand-cream/60"
               }`}
             >
               <p className="font-display text-2xl">{section.label}</p>
@@ -35,7 +35,7 @@ export default function MenuSection() {
         })}
       </div>
 
-      <div className="mt-8 rounded-3xl border border-gold/20 bg-gradient-to-br from-stone-900 to-black p-6 sm:p-8">
+      <div className="mt-8 rounded-3xl border border-brand-cream/20 bg-gradient-to-br from-stone-900 to-black p-6 sm:p-8">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeSection.id}
@@ -46,9 +46,24 @@ export default function MenuSection() {
             className="grid gap-4 sm:grid-cols-2"
           >
             {activeSection.items.map((item) => (
-              <article key={item.name} className="rounded-2xl border border-stone-800 bg-black/30 p-5">
-                <h3 className="font-display text-2xl text-stone-100">{item.name}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-stone-400">{item.detail}</p>
+              <article
+                key={item.name}
+                className="flex flex-col overflow-hidden rounded-2xl border border-stone-800 bg-black/35 sm:flex-row"
+              >
+                <div className="h-40 w-full sm:h-auto sm:w-44 sm:flex-shrink-0">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+
+                <div className="p-5">
+                  <h3 className="font-display text-2xl text-brand-cream">{item.name}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-stone-300">{item.detail}</p>
+                </div>
               </article>
             ))}
           </motion.div>

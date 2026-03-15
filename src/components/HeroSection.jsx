@@ -15,17 +15,17 @@ export default function HeroSection() {
         fetchPriority="high"
         decoding="async"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/65 to-coal" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(185,28,28,0.25),transparent_40%),radial-gradient(circle_at_80%_70%,rgba(201,168,106,0.16),transparent_35%)]" />
+      <div className="absolute inset-0 bg-gradient-to-r from-wood-dark/90 via-wood-dark/55 to-transparent" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_22%_24%,rgba(140,45,43,0.28),transparent_40%),radial-gradient(circle_at_84%_72%,rgba(245,181,145,0.14),transparent_34%)]" />
 
       <div className="relative mx-auto flex min-h-[92vh] max-w-6xl flex-col items-start justify-center px-6 py-24 sm:px-10">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-4 text-xs uppercase tracking-[0.4em] text-gold"
+          className="mb-4 text-xs uppercase tracking-[0.4em] text-brand-cream"
         >
-          Fuego, tradicion y hospitalidad
+          40 anos de tradicion parrillera
         </motion.p>
 
         <motion.h1
@@ -43,7 +43,8 @@ export default function HeroSection() {
           transition={{ duration: 0.75, delay: 0.2 }}
           className="mt-6 max-w-2xl text-base text-stone-200 sm:text-lg"
         >
-          Donde el fuego habla. Desde 1983 manteniendo la tradicion en Arrecifes.
+          Especialistas en Coccion a la Estaca, brasas nobles y recetas de familia.
+          Desde 1983 celebramos 40 anos de tradicion en Arrecifes.
         </motion.p>
 
         <motion.a
@@ -53,7 +54,7 @@ export default function HeroSection() {
           href="https://wa.me/5492478460000?text=Hola%20Parrilla%20Fernandez,%20quiero%20reservar%20una%20mesa"
           target="_blank"
           rel="noreferrer"
-          className="mt-10 inline-flex items-center rounded-full border border-gold/70 bg-fire px-7 py-3 text-sm font-semibold uppercase tracking-wider text-white shadow-glow transition duration-300 hover:-translate-y-0.5 hover:bg-red-700"
+          className="mt-10 inline-flex items-center rounded-full border border-brand-cream/70 bg-brand-red px-7 py-3 text-sm font-semibold uppercase tracking-wider text-white shadow-glow transition duration-300 hover:-translate-y-0.5 hover:bg-[#7a2523]"
         >
           Reservar Mesa
         </motion.a>

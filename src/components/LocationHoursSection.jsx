@@ -32,20 +32,20 @@ export default function LocationHoursSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ delay: 0.05 }}
-          className="rounded-3xl border border-gold/20 bg-stone-950/70 p-6"
+          className="rounded-3xl border border-brand-cream/20 bg-stone-950/70 p-6"
         >
           <div className="mb-6 flex items-start gap-3">
-            <MapPin className="mt-0.5 h-5 w-5 text-fire" />
+            <MapPin className="mt-0.5 h-5 w-5 text-brand-red" />
             <div>
-              <p className="text-xs uppercase tracking-[0.3em] text-gold/80">Direccion</p>
+              <p className="text-xs uppercase tracking-[0.3em] text-brand-cream/80">Direccion</p>
               <p className="mt-2 text-base text-stone-200">Ruta 51 e Italia, Arrecifes</p>
             </div>
           </div>
 
           <div className="flex items-start gap-3">
-            <Clock3 className="mt-0.5 h-5 w-5 text-fire" />
+            <Clock3 className="mt-0.5 h-5 w-5 text-brand-red" />
             <div>
-              <p className="text-xs uppercase tracking-[0.3em] text-gold/80">Horarios</p>
+              <p className="text-xs uppercase tracking-[0.3em] text-brand-cream/80">Horarios</p>
               <ul className="mt-2 space-y-2 text-sm text-stone-300">
                 <li>Martes a Sabado: 12:00 a 15:00 y 20:00 a 00:00</li>
                 <li>Domingo: 12:00 a 15:30</li>
