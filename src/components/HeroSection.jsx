@@ -5,7 +5,7 @@ const heroImage =
 
 export default function HeroSection() {
   return (
-    <header id="inicio" className="relative isolate min-h-[92vh] scroll-mt-24 overflow-hidden">
+    <header id="inicio" className="relative isolate min-h-screen scroll-mt-24 overflow-hidden">
       <img
         src={heroImage}
         srcSet={`${heroImage}&w=900 900w, ${heroImage}&w=1400 1400w, ${heroImage}&w=1800 1800w`}
@@ -18,7 +18,7 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-gradient-to-r from-wood-dark/90 via-wood-dark/55 to-transparent" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_22%_24%,rgba(140,45,43,0.28),transparent_40%),radial-gradient(circle_at_84%_72%,rgba(245,181,145,0.14),transparent_34%)]" />
 
-      <div className="relative mx-auto flex min-h-[92vh] max-w-6xl flex-col items-start justify-center px-6 py-24 sm:px-10">
+      <div className="relative mx-auto flex min-h-screen max-w-6xl flex-col items-start justify-center px-6 py-24 sm:px-10">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -54,7 +54,7 @@ export default function HeroSection() {
           href="https://wa.me/5492478460000?text=Hola%20Parrilla%20Fernandez,%20quiero%20reservar%20una%20mesa"
           target="_blank"
           rel="noreferrer"
-          className="mt-10 inline-flex items-center rounded-full border border-brand-cream/70 bg-brand-red px-7 py-3 text-sm font-semibold uppercase tracking-wider text-white shadow-glow transition duration-300 hover:-translate-y-0.5 hover:bg-[#7a2523]"
+          className="mt-10 inline-flex items-center rounded-full border border-brand-cream/70 bg-brand-red px-7 py-3 text-sm font-semibold uppercase tracking-wider text-white shadow-glow transition duration-300 hover:bg-[#7a2523]"
         >
           Reservar Mesa
         </motion.a>

@@ -34,6 +34,29 @@ body {
   letter-spacing: 0.03em;
 }
 
+.underline-ltr {
+  position: relative;
+  text-decoration: none;
+}
+
+.underline-ltr::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.2em;
+  height: 1px;
+  background-color: #f5b591;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 220ms ease;
+}
+
+.underline-ltr:hover::after,
+.underline-ltr:focus-visible::after {
+  transform: scaleX(1);
+}
+
 h1,
 h2,
 h3,

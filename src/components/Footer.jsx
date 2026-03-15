@@ -28,16 +28,16 @@ export default function Footer() {
         <div>
           <p className="text-xs uppercase tracking-[0.3em] text-brand-cream/80">Navegacion</p>
           <div className="mt-4 space-y-2 text-sm text-stone-300">
-            <a href="#inicio" className="block transition hover:text-white">
+            <a href="#inicio" className="underline-ltr block transition hover:text-white">
               Inicio
             </a>
-            <a href="#menu" className="block transition hover:text-white">
+            <a href="#menu" className="underline-ltr block transition hover:text-white">
               Menu
             </a>
-            <a href="#experiencia" className="block transition hover:text-white">
+            <a href="#experiencia" className="underline-ltr block transition hover:text-white">
               Experiencia
             </a>
-            <a href="#ubicacion" className="block transition hover:text-white">
+            <a href="#ubicacion" className="underline-ltr block transition hover:text-white">
               Ubicacion
             </a>
           </div>
@@ -49,14 +49,14 @@ export default function Footer() {
             <p className="flex items-start gap-2">
               <MapPin className="mt-0.5 h-4 w-4 text-brand-red" /> Ruta 51 e Italia, Arrecifes
             </p>
-            <a href="tel:+542478460000" className="flex items-center gap-2 transition hover:text-white">
+            <a href="tel:+542478460000" className="underline-ltr flex items-center gap-2 transition hover:text-white">
               <Phone className="h-4 w-4 text-brand-red" /> +54 2478 46-0000
             </a>
             <a
               href="https://www.instagram.com/parrillafernandez1"
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-2 transition hover:text-white"
+              className="underline-ltr flex items-center gap-2 transition hover:text-white"
             >
               <Instagram className="h-4 w-4 text-brand-red" /> @parrillafernandez1
             </a>

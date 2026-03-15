@@ -28,7 +28,7 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className="rounded-full border border-transparent px-3 py-1.5 text-sm font-medium text-stone-200 transition hover:border-brand-cream/50 hover:text-white"
+                className="rounded-full border border-transparent px-3 py-1.5 text-sm font-medium text-stone-200 transition hover:text-brand-cream"
               >
                 {link.label}
               </a>
@@ -38,7 +38,7 @@ export default function Navbar() {
               href={reserveHref}
               target="_blank"
               rel="noreferrer"
-              className="ml-1 rounded-full border border-brand-cream/80 bg-brand-red px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white shadow-glow transition hover:-translate-y-0.5 hover:bg-[#7a2523]"
+              className="ml-1 rounded-full border border-brand-cream/80 bg-brand-red px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white shadow-glow transition hover:bg-[#7a2523]"
             >
               Reservar
             </a>
