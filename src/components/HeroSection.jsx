@@ -44,17 +44,21 @@ export default function HeroSection() {
           Desde 1983 celebramos 40 anos de tradicion en Arrecifes.
         </motion.p>
 
-        <motion.a
+        <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.3 }}
-          href="https://wa.me/5492478460000?text=Hola%20Parrilla%20Fernandez,%20quiero%20reservar%20una%20mesa"
-          target="_blank"
-          rel="noreferrer"
-          className="mt-10 inline-flex items-center rounded-full border border-brand-cream/70 bg-brand-red px-7 py-3 text-sm font-semibold uppercase tracking-wider text-white shadow-glow transition duration-300 hover:bg-[#7a2523]"
+          className="mt-10"
         >
-          Reservar Mesa
-        </motion.a>
+          <a
+            className="btn"
+            href="https://wa.me/5492478460000?text=Hola%20Parrilla%20Fernandez,%20quiero%20reservar%20una%20mesa"
+            target="_blank"
+            rel="noreferrer"
+          >
+            RESERVAR MESA
+          </a>
+        </motion.div>
       </div>
     </header>
   );

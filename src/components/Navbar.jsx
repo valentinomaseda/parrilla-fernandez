@@ -22,7 +22,7 @@ export default function Navbar() {
       <div className="mx-auto max-w-6xl px-4 pt-3 sm:px-8">
         <div className="flex items-center justify-between rounded-2xl border border-brand-cream/20 bg-black/55 px-3 py-2 backdrop-blur-md">
           <a href="#inicio" className="shrink-0" aria-label="Ir al inicio">
-            <img src="/logo.png" alt="Parrilla Fernandez" className="h-10 w-auto sm:h-11" />
+            <img src="/logo.png" alt="Parrilla Fernandez" className="h-14 w-auto sm:h-16 transition-all duration-200" />
           </a>
 
           <div className="hidden items-center gap-1 md:flex">
@@ -40,7 +40,7 @@ export default function Navbar() {
               href={reserveHref}
               target="_blank"
               rel="noreferrer"
-              className="ml-1 rounded-full border border-brand-cream/80 bg-brand-red px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white shadow-glow transition hover:bg-[#7a2523]"
+              className="btn ml-1 text-xs uppercase tracking-wider"
             >
               Reservar
             </a>

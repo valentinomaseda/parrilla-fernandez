@@ -19,7 +19,7 @@ export default function Footer() {
             href="https://wa.me/5492478460000?text=Hola%20Parrilla%20Fernandez,%20quiero%20reservar%20una%20mesa"
             target="_blank"
             rel="noreferrer"
-            className="mt-5 inline-flex rounded-full border border-brand-cream/70 bg-brand-red px-5 py-2 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-[#7a2523]"
+            className="btn mt-5 text-sm uppercase tracking-wide"
           >
             Reservar por WhatsApp
           </a>
