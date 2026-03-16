@@ -1,3 +1,11 @@
+/* Textura sutil para AboutSection */
+.about-texture {
+  background-color: #f5b591;
+  background-image:
+    url('https://www.transparenttextures.com/patterns/wood-pattern.png'),
+    radial-gradient(circle at 1px 1px, rgba(245, 181, 145, 0.09) 1px, transparent 0);
+  background-size: 340px 340px, 9px 9px;
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -55,6 +63,13 @@ body {
 .underline-ltr:hover::after,
 .underline-ltr:focus-visible::after {
   transform: scaleX(1);
+}
+
+.noise-dark {
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(245, 181, 145, 0.07) 1px, transparent 0),
+    linear-gradient(180deg, rgba(26, 22, 20, 0.82), rgba(26, 22, 20, 0.9));
+  background-size: 7px 7px, auto;
 }
 
 h1,

@@ -19,10 +19,11 @@ export default function LocationHoursSection() {
           className="overflow-hidden rounded-3xl border border-stone-700/60"
         >
           <iframe
-            title="Mapa Parrilla Fernandez"
-            src="https://www.google.com/maps?q=Ruta+51+e+Italia,+Arrecifes&output=embed"
+            title="Ubicación Parrilla Fernández"
+            src="https://www.google.com/maps?q=Parrilla+Fernandez,+Italia+%26+RP51,+Arrecifes,+Buenos+Aires,+Argentina&output=embed"
             className="h-80 w-full border-0 sm:h-[26rem]"
             loading="lazy"
+            allowFullScreen=""
             referrerPolicy="no-referrer-when-downgrade"
           />
         </motion.div>

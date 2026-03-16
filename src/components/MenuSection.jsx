@@ -68,6 +68,17 @@ export default function MenuSection() {
             ))}
           </motion.div>
         </AnimatePresence>
+        {/* CTA al menú completo */}
+        <div className="mt-10 flex justify-center">
+          <a
+            href="https://drive.google.com/YOUR_MENU_PDF_LINK"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block rounded-full bg-brand-red px-8 py-3 font-display text-lg text-white shadow-lg transition hover:bg-brand-red/90 focus:outline-none focus:ring-2 focus:ring-brand-cream focus:ring-offset-2"
+          >
+            Ver menú completo
+          </a>
+        </div>
       </div>
     </section>
   );

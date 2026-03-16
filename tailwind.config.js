@@ -6,8 +6,16 @@ export default {
       colors: {
         coal: "#0a0a0a",
         "wood-dark": "#1a1614",
-        "brand-red": "#8c2d2b",
-        "brand-cream": "#f5b591",
+        "brand-red": {
+          DEFAULT: "#8c2d2b",
+          light: "#a64a47",
+          dark: "#6e2220",
+        },
+        "brand-cream": {
+          DEFAULT: "#f5b591",
+          light: "#ffd2b8",
+          dark: "#d89572",
+        },
         ember: "#2a1212",
       },
       boxShadow: {

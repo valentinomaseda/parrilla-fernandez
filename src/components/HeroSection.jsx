@@ -1,22 +1,19 @@
 import { motion } from "framer-motion";
 
-const heroImage =
-  "https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=1800&q=70";
+const heroImage = "/estaca.jpg";
 
 export default function HeroSection() {
   return (
     <header id="inicio" className="relative isolate min-h-screen scroll-mt-24 overflow-hidden">
       <img
         src={heroImage}
-        srcSet={`${heroImage}&w=900 900w, ${heroImage}&w=1400 1400w, ${heroImage}&w=1800 1800w`}
-        sizes="100vw"
         alt="Parrilla encendida con brasas"
         className="absolute inset-0 h-full w-full object-cover"
         fetchPriority="high"
         decoding="async"
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-wood-dark/90 via-wood-dark/55 to-transparent" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_22%_24%,rgba(140,45,43,0.28),transparent_40%),radial-gradient(circle_at_84%_72%,rgba(245,181,145,0.14),transparent_34%)]" />
+      <div className="absolute inset-0 bg-gradient-to-r from-brand-red/65 via-wood-dark/55 to-transparent" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_22%_24%,rgba(140,45,43,0.45),transparent_42%),radial-gradient(circle_at_84%_72%,rgba(245,181,145,0.14),transparent_34%)]" />
 
       <div className="relative mx-auto flex min-h-screen max-w-6xl flex-col items-start justify-center px-6 py-24 sm:px-10">
         <motion.p
