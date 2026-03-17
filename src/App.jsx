@@ -7,6 +7,7 @@ import GallerySection from "./components/GallerySection";
 import ValueInfoSection from "./components/ValueInfoSection";
 import LocationHoursSection from "./components/LocationHoursSection";
 import Footer from "./components/Footer";
+import StatsSection from "./components/StatsSection";
 
 export default function App() {
   return (
@@ -14,7 +15,7 @@ export default function App() {
       <Navbar />
       <HeroSection />
       <AboutSection />
-
+      <StatsSection />
       <motion.main
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}

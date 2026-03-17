@@ -10,9 +10,9 @@ export default function MenuSection() {
   return (
     <section id="menu" className="mx-auto max-w-6xl scroll-mt-24 px-6 py-20 sm:px-10">
       <SectionHeading
-        eyebrow="Menu resumido"
-        title="Sabores de fogon y mesa familiar"
-        subtitle="Una seleccion clasica de la casa con productos frescos, cocciones cuidadas y porciones para compartir."
+        eyebrow="Menú resumido"
+        title="Sabores de fogón y mesa familiar"
+        subtitle="Una selección clásica de la casa con productos frescos, cocciones cuidadas y porciones para compartir."
       />
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -59,7 +59,6 @@ export default function MenuSection() {
                     className="h-full w-full object-cover"
                   />
                 </div>
-
                 <div className="p-5">
                   <h3 className="font-display text-2xl text-brand-cream">{item.name}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-stone-300">{item.detail}</p>
@@ -68,13 +67,14 @@ export default function MenuSection() {
             ))}
           </motion.div>
         </AnimatePresence>
-        {/* CTA al menú completo */}
+
+        {/* CTA consistente con el resto del sitio */}
         <div className="mt-10 flex justify-center">
           <a
             href="https://drive.google.com/YOUR_MENU_PDF_LINK"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block rounded-full bg-brand-red px-8 py-3 font-display text-lg text-white shadow-lg transition hover:bg-brand-red/90 focus:outline-none focus:ring-2 focus:ring-brand-cream focus:ring-offset-2"
+            className="btn text-sm uppercase tracking-widest"
           >
             Ver menú completo
           </a>
