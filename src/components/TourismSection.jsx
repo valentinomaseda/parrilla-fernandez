@@ -93,17 +93,17 @@ export default function TourismSection({ arrecifesPlaces = defaultPlaces }) {
   const toggle = (id) => setActivePlaceId((prev) => (prev === id ? null : id))
 
   return (
-    <section id="turismo" className="w-full bg-wood-dark text-brand-cream font-display py-10 px-4 md:px-8">
+    <section id="turismo" className="w-full noise-dark relative bg-grain [background-size:8px_8px] text-brand-cream font-display py-10 px-4 md:px-8 text-base md:text-lg">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-8">
         {/* Left: Accordion */}
         <div className="space-y-4">
             <div className="flex items-center gap-4">
               <span className="ml-0 inline-flex items-center gap-3">
                 <Trophy className="text-brand-cream" size={28} />
-                <span className="text-3xl md:text-4xl font-extrabold tracking-tight">Cuna de Campeones</span>
+                <span className="text-4xl md:text-5xl font-extrabold tracking-tight">Cuna de Campeones</span>
               </span>
             </div>
-            <span className='text-xl'>Lugares de interés</span>
+            <span className='text-2xl md:text-3xl font-semibold'>Lugares de interés</span>
             {arrecifesPlaces.map((place) => {
               const isActive = place.id === activePlaceId
               return (
@@ -121,8 +121,8 @@ export default function TourismSection({ arrecifesPlaces = defaultPlaces }) {
                         <MapPin className="text-brand-cream" size={20} />
                       </div>
                       <div>
-                        <div className="text-lg font-semibold">{place.name}</div>
-                        <div className="text-sm text-brand-cream/90">{place.tagline}</div>
+                        <div className="text-xl md:text-2xl font-semibold">{place.name}</div>
+                        <div className="text-base text-brand-cream/90">{place.tagline}</div>
                       </div>
                     </div>
                     <div className="text-brand-cream/80">{isActive ? '−' : '+'}</div>
@@ -137,7 +137,7 @@ export default function TourismSection({ arrecifesPlaces = defaultPlaces }) {
                         transition={{ duration: 0.35 }}
                         className="overflow-hidden mt-3 text-sm"
                       >
-                        <p className="mb-3">{place.description}</p>
+                        <p className="mb-3 text-base">{place.description}</p>
                         {/* Mobile visuals: show gallery + map under the item on small screens */}
                         <div className="md:hidden mt-3">
                           <div className="grid grid-cols-3 gap-2 h-40 rounded-2xl overflow-hidden">
@@ -153,14 +153,14 @@ export default function TourismSection({ arrecifesPlaces = defaultPlaces }) {
                           </div>
 
                           <div className="mt-3 h-48 rounded-2xl overflow-hidden">
-                            <iframe
-                              title={`map-mobile-${place.id}`}
-                              src={place.iframeSrc ? place.iframeSrc : `https://www.google.com/maps?q=${place.coords?.lat},${place.coords?.lng}&output=embed`}
-                              className="w-full h-full border-0"
-                              loading="lazy"
-                              referrerPolicy="no-referrer-when-downgrade"
-                              allowFullScreen
-                            />
+                              <iframe
+                                title={`Ubicación de ${place.name} en Arrecifes`}
+                                src={place.iframeSrc ? place.iframeSrc : `https://www.google.com/maps?q=${place.coords?.lat},${place.coords?.lng}&output=embed`}
+                                className="w-full h-full border-0"
+                                loading="lazy"
+                                referrerPolicy="no-referrer-when-downgrade"
+                                allowFullScreen
+                              />
                           </div>
                         </div>
                       </motion.div>
@@ -201,7 +201,7 @@ export default function TourismSection({ arrecifesPlaces = defaultPlaces }) {
             </div>
             <div className="w-full h-56 md:h-72">
               <iframe
-                title={`map-${activePlace.id}`}
+                title={`Ubicación de ${activePlace.name} en Arrecifes`}
                 src={activePlace.iframeSrc ? activePlace.iframeSrc : `https://www.google.com/maps?q=${activePlace.coords?.lat},${activePlace.coords?.lng}&output=embed`}
                 className="w-full h-full border-0"
                 loading="lazy"

@@ -9,6 +9,7 @@ import LocationHoursSection from "./components/LocationHoursSection";
 import Footer from "./components/Footer";
 import StatsSection from "./components/StatsSection";
 import TourismSection from "./components/TourismSection";
+import ReviewsSection from "./components/ReviewsSection";
 
 export default function App() {
   return (
@@ -29,6 +30,10 @@ export default function App() {
         <ValueInfoSection />
         <LocationHoursSection />
         <TourismSection />
+        <div className="max-w-7xl mx-auto">
+          <div aria-hidden="true" className="h-0.5 bg-gradient-to-r from-transparent via-brand-cream/60 to-transparent rounded-full" />
+        </div>
+        <ReviewsSection />
       </motion.main>
 
       <Footer />
