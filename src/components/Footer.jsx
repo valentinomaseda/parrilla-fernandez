@@ -11,7 +11,7 @@ export default function Footer() {
           </a>
 
           <p className="mt-4 max-w-md text-sm leading-relaxed text-stone-400">
-            Donde el fuego habla desde 1983. Cocina de tradicion, cortes premium y una experiencia
+            Donde el fuego habla desde 1977. Cocina de tradicion, cortes premium y una experiencia
             familiar para quienes pasan por Arrecifes.
           </p>
 

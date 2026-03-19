@@ -25,11 +25,11 @@ export default function StatsSection() {
   return (
     <section className="border-y border-brand-cream/10 bg-black/40 py-16">
       <p className="mb-10 text-center text-[11px] uppercase tracking-[0.3em] text-stone-500">
-        Parrilla Fernández · Desde 1983
+        Parrilla Fernández · Desde 1977
       </p>
       <div className="mx-auto grid max-w-4xl grid-cols-3 divide-x divide-stone-800">
         {[
-          { value: 49, suffix: "", label: "Años de fuego", sub: "Fundada en 1983" },
+          { value: 49, suffix: "", label: "Años de fuego", sub: "Fundada en 1977" },
           { value: 12, suffix: "k+", label: "Comensales felices", sub: "Familias y viajeros" },
           { value: 1, suffix: "", label: "Familia al frente", sub: "Misma cocina, misma pasión" },
         ].map((stat) => (

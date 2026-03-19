@@ -79,7 +79,7 @@ export default function HeroSection() {
           className="mt-6 max-w-2xl text-base text-stone-200 sm:text-lg"
         >
           Especialistas en Cocción a la Estaca, brasas nobles y recetas de familia.
-          Desde 1983 celebramos 49 años de tradición en Arrecifes.
+          Desde 1977 celebramos 49 años de tradición en Arrecifes.
         </motion.p>
 
         <motion.div

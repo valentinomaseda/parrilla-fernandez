@@ -1,22 +1,22 @@
-import { Flame, Armchair, Soup } from "lucide-react";
+import { Flame, Wine, Beef } from "lucide-react";
 import { motion } from "framer-motion";
 import SectionHeading from "./SectionHeading";
 
 const features = [
   {
-    title: "Chimenea",
-    text: "Salon calido con fuego real en temporada, ideal para noches frias.",
+    title: "Cocción a la estaca",
+    text: "Disfrutá el auténtico sabor criollo con carnes asadas lentamente al fuego, a la vista de todos.",
     icon: Flame,
   },
   {
-    title: "Asientos al aire libre",
-    text: "Patio amplio para disfrutar la parrilla con aire de campo.",
-    icon: Armchair,
+    title: "Parrilla libre",
+    text: "Variedad de cortes y achuras servidos sin límite, para que repitas tus favoritos las veces que quieras.",
+    icon: Beef,
   },
   {
-    title: "Buffet",
-    text: "Opciones de acompanamientos y ensaladas para toda la mesa.",
-    icon: Soup,
+    title: "Bodega de vinos",
+    text: "Selección especial de vinos argentinos para maridar cada plato y realzar tu experiencia.",
+    icon: Wine,
   },
 ];
 
