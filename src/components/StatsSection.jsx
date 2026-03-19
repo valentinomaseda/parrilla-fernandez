@@ -29,7 +29,7 @@ export default function StatsSection() {
       </p>
       <div className="mx-auto grid max-w-4xl grid-cols-3 divide-x divide-stone-800">
         {[
-          { value: 40, suffix: "", label: "Años de fuego", sub: "Fundada en 1983" },
+          { value: 49, suffix: "", label: "Años de fuego", sub: "Fundada en 1983" },
           { value: 12, suffix: "k+", label: "Comensales felices", sub: "Familias y viajeros" },
           { value: 1, suffix: "", label: "Familia al frente", sub: "Misma cocina, misma pasión" },
         ].map((stat) => (

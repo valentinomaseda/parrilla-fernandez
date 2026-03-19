@@ -7,7 +7,8 @@ const links = [
   { label: "Menu", href: "#menu" },
   { label: "Galeria", href: "#galeria" },
   { label: "Ubicacion", href: "#ubicacion" },
-  { label: "Turismo", href: "#turismo" }
+  { label: "Turismo", href: "#turismo" },
+  { label: "Opiniones", href: "#reviews" }
 ];
 
 const reserveHref =

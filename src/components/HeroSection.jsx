@@ -67,9 +67,9 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.75, delay: 0.15 }}
-          className="mt-3 text-2xl md:text-3xl text-brand-cream italic"
+          className="mt-3 text-2xl md:text-3xl text-brand-cream italic font-display"
         >
-          donde el fuego habla
+          Donde el fuego habla.
         </motion.p>
 
         <motion.p

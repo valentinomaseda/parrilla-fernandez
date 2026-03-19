@@ -66,7 +66,7 @@ export default function ReviewsSection({ reviews = sampleReviews }) {
   const isDark = true // this section uses wood-dark background per spec
 
   return (
-    <section className="w-full bg-wood-dark text-brand-cream font-sans py-12 px-4 md:px-8">
+    <section id='reviews' className="w-full bg-wood-dark text-brand-cream font-sans py-12 px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
         <header className="text-center mb-8">
           <h2 className="text-3xl md:text-4xl font-display font-semibold">Lo que dicen nuestros comensales</h2>
