@@ -7,6 +7,7 @@ const links = [
   { label: "Menu", href: "#menu" },
   { label: "Galeria", href: "#galeria" },
   { label: "Ubicacion", href: "#ubicacion" },
+  { label: "Turismo", href: "#turismo" }
 ];
 
 const reserveHref =
@@ -21,8 +22,12 @@ export default function Navbar() {
     <nav className="fixed inset-x-0 top-0 z-50 bg-gradient-to-b from-black/70 to-transparent">
       <div className="mx-auto max-w-6xl px-4 pt-3 sm:px-8">
         <div className="flex items-center justify-between rounded-2xl border border-brand-cream/20 bg-black/55 px-3 py-2 backdrop-blur-md">
-          <a href="#inicio" className="shrink-0" aria-label="Ir al inicio">
-            <img src="/logo.png" alt="Parrilla Fernandez" className="h-14 w-auto sm:h-16 transition-all duration-200" />
+          <a href="#inicio" className="shrink-0 group" aria-label="Ir al inicio">
+            <img 
+              src="/logo.png" 
+              alt="Parrilla Fernandez" 
+              className="h-14 w-auto sm:h-16 transition-transform duration-500 group-hover:scale-110" 
+            />
           </a>
 
           <div className="hidden items-center gap-1 md:flex">

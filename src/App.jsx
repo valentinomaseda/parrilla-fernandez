@@ -8,6 +8,7 @@ import ValueInfoSection from "./components/ValueInfoSection";
 import LocationHoursSection from "./components/LocationHoursSection";
 import Footer from "./components/Footer";
 import StatsSection from "./components/StatsSection";
+import TourismSection from "./components/TourismSection";
 
 export default function App() {
   return (
@@ -27,6 +28,7 @@ export default function App() {
         <GallerySection />
         <ValueInfoSection />
         <LocationHoursSection />
+        <TourismSection />
       </motion.main>
 
       <Footer />
