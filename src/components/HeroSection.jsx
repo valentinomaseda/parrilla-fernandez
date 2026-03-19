@@ -51,7 +51,7 @@ export default function HeroSection() {
           transition={{ duration: 0.6 }}
           className="mb-4 text-xs uppercase tracking-[0.4em] text-brand-cream"
         >
-          40 años de tradición parrillera
+          49 años de tradición parrillera
         </motion.p>
 
         <motion.h1
@@ -66,11 +66,20 @@ export default function HeroSection() {
         <motion.p
           initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.75, delay: 0.15 }}
+          className="mt-3 text-2xl md:text-3xl text-brand-cream italic"
+        >
+          donde el fuego habla
+        </motion.p>
+
+        <motion.p
+          initial={{ opacity: 0, y: 28 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.75, delay: 0.2 }}
           className="mt-6 max-w-2xl text-base text-stone-200 sm:text-lg"
         >
           Especialistas en Cocción a la Estaca, brasas nobles y recetas de familia.
-          Desde 1983 celebramos 40 años de tradición en Arrecifes.
+          Desde 1983 celebramos 49 años de tradición en Arrecifes.
         </motion.p>
 
         <motion.div

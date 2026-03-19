@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { MapPin } from 'lucide-react'
+import { MapPin, Trophy } from 'lucide-react'
 
 const defaultPlaces = [
   {
@@ -97,10 +97,13 @@ export default function TourismSection({ arrecifesPlaces = defaultPlaces }) {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-8">
         {/* Left: Accordion */}
         <div className="space-y-4">
-          <h2 className="text-3xl md:text-4xl font-semibold">Lugares de interés</h2>
-          <p className="text-sm text-brand-cream/90 max-w-prose">Seleccioná un lugar para ver galerías y la ubicación en el mapa.</p>
-
-          <div className="space-y-3">
+            <div className="flex items-center gap-4">
+              <span className="ml-0 inline-flex items-center gap-3">
+                <Trophy className="text-brand-cream" size={28} />
+                <span className="text-3xl md:text-4xl font-extrabold tracking-tight">Cuna de Campeones</span>
+              </span>
+            </div>
+            <span className='text-xl'>Lugares de interés</span>
             {arrecifesPlaces.map((place) => {
               const isActive = place.id === activePlaceId
               return (
@@ -135,7 +138,31 @@ export default function TourismSection({ arrecifesPlaces = defaultPlaces }) {
                         className="overflow-hidden mt-3 text-sm"
                       >
                         <p className="mb-3">{place.description}</p>
-                        {/* botones removidos: no realizaban acción */}
+                        {/* Mobile visuals: show gallery + map under the item on small screens */}
+                        <div className="md:hidden mt-3">
+                          <div className="grid grid-cols-3 gap-2 h-40 rounded-2xl overflow-hidden">
+                            {(place.images || []).slice(0, 3).map((img, i) => {
+                              const src = img?.startsWith('public/') ? `/${img.replace(/^public\//, '')}` : img
+                              const spanClass = i === 0 ? 'col-span-2 row-span-2' : ''
+                              return (
+                                <div key={i} className={`${spanClass} relative w-full h-full overflow-hidden rounded-lg`}>
+                                  <img src={src} alt={`${place.name} ${i + 1}`} className="absolute inset-0 w-full h-full object-cover object-center" />
+                                </div>
+                              )
+                            })}
+                          </div>
+
+                          <div className="mt-3 h-48 rounded-2xl overflow-hidden">
+                            <iframe
+                              title={`map-mobile-${place.id}`}
+                              src={place.iframeSrc ? place.iframeSrc : `https://www.google.com/maps?q=${place.coords?.lat},${place.coords?.lng}&output=embed`}
+                              className="w-full h-full border-0"
+                              loading="lazy"
+                              referrerPolicy="no-referrer-when-downgrade"
+                              allowFullScreen
+                            />
+                          </div>
+                        </div>
                       </motion.div>
                     )}
                   </AnimatePresence>
@@ -143,10 +170,9 @@ export default function TourismSection({ arrecifesPlaces = defaultPlaces }) {
               )
             })}
           </div>
-        </div>
 
         {/* Right: Visuals */}
-        <div className="space-y-4">
+        <div className="space-y-4 hidden md:block">
           <div className="rounded-3xl bg-wood-dark/60 p-4 shadow-lg border border-brand-cream/10">
             <div className="grid grid-cols-3 gap-2 h-48 md:h-64 rounded-2xl overflow-hidden">
               {(activePlace.images || []).slice(0, 3).map((img, i) => {
