@@ -79,9 +79,12 @@ export default function ReviewsSection({ reviews = sampleReviews }) {
               key={r.id}
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ y: -6, scale: 1.02 }}
+              whileTap={{ scale: 0.995 }}
               viewport={{ once: true, amount: 0.15 }}
               transition={{ duration: 0.45, delay: idx * 0.06 }}
-              className="rounded-3xl bg-wood-dark/70 border border-brand-cream/10 p-6 shadow-md"
+              tabIndex={0}
+              className="rounded-3xl bg-wood-dark/70 border border-brand-cream/10 p-6 shadow-md hover:shadow-2xl transition-shadow duration-200 will-change-transform focus:outline-none focus:ring-4 focus:ring-brand-cream/20"
             >
               <div className="flex items-center justify-between mb-3">
                 <div>
