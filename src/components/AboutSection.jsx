@@ -17,10 +17,10 @@ export default function AboutSection() {
             El corazón de Arrecifes
           </p>
           <h2 className="mt-3 text-4xl leading-tight text-wood-dark sm:text-5xl">
-            49 años de fuego y tradicion
+            49 años de fuego y tradición
           </h2>
           <p className="mt-5 text-base leading-relaxed text-wood-dark/85">
-            Parrilla Fernandez nacio al calor de la estaca y la mesa larga. Durante cuatro
+            Parrilla Fernández nacio al calor de la estaca y la mesa larga. Durante cuatro
             decadas fuimos testigos de encuentros familiares, festejos y sobremesas que se
             volvieron parte de la memoria de la ruta.
           </p>

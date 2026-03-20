@@ -171,16 +171,23 @@ export default function TourismSection({ arrecifesPlaces = defaultPlaces }) {
                               const src = img?.startsWith('public/') ? `/${img.replace(/^public\//, '')}` : img
                               const spanClass = i === 0 ? 'col-span-2 row-span-2' : ''
                               return (
-                                <div key={i} className={`${spanClass} relative w-full h-full overflow-hidden rounded-lg`}>
-                                  <button
-                                    type="button"
-                                    onClick={() => openLightbox((place.images || []).slice(0, 3), i)}
-                                    className="absolute inset-0 w-full h-full"
-                                    aria-label={`Abrir galería de ${place.name} imagen ${i + 1}`}
-                                  >
-                                    <img src={src} alt={`${place.name} ${i + 1}`} className="absolute inset-0 w-full h-full object-cover object-center" />
-                                  </button>
-                                </div>
+                                <motion.figure
+                                  key={i}
+                                  initial={{ opacity: 0, y: 12 }}
+                                  whileInView={{ opacity: 1, y: 0 }}
+                                  viewport={{ once: true, amount: 0.25 }}
+                                  transition={{ duration: 0.35, delay: i * 0.04 }}
+                                  className={`group relative cursor-pointer overflow-hidden rounded-2xl border border-brand-cream/20 ${spanClass}`}
+                                  onClick={() => openLightbox((place.images || []).slice(0, 3), i)}
+                                >
+                                  <img
+                                    src={src}
+                                    alt={`${place.name} ${i + 1}`}
+                                    loading="lazy"
+                                    decoding="async"
+                                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                                  />
+                                </motion.figure>
                               )
                             })}
                           </div>
@@ -212,20 +219,23 @@ export default function TourismSection({ arrecifesPlaces = defaultPlaces }) {
                 const src = img?.startsWith('public/') ? `/${img.replace(/^public\//, '')}` : img
                 const spanClass = i === 0 ? 'col-span-2 row-span-2 md:col-span-2 md:row-span-2' : ''
                 return (
-                  <div key={i} className={`${spanClass} relative w-full h-full overflow-hidden rounded-lg`}>
-                    <button
-                      type="button"
-                      onClick={() => openLightbox((activePlace.images || []).slice(0, 3), i)}
-                      className="absolute inset-0 w-full h-full"
-                      aria-label={`Abrir galería de ${activePlace.name} imagen ${i + 1}`}
-                    >
-                      <img
-                        src={src}
-                        alt={`${activePlace.name} ${i + 1}`}
-                        className="absolute inset-0 w-full h-full object-cover object-center"
-                      />
-                    </button>
-                  </div>
+                  <motion.figure
+                    key={i}
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.25 }}
+                    transition={{ duration: 0.35, delay: i * 0.04 }}
+                    className={`group relative cursor-pointer overflow-hidden rounded-2xl border border-brand-cream/20 ${spanClass}`}
+                    onClick={() => openLightbox((activePlace.images || []).slice(0, 3), i)}
+                  >
+                    <img
+                      src={src}
+                      alt={`${activePlace.name} ${i + 1}`}
+                      loading="lazy"
+                      decoding="async"
+                      className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                    />
+                  </motion.figure>
                 )
               })}
             </div>
@@ -255,27 +265,30 @@ export default function TourismSection({ arrecifesPlaces = defaultPlaces }) {
       <AnimatePresence>
         {lightboxOpen && (
           <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-sm"
+            onClick={closeLightbox}
           >
             <motion.div
-              className="relative max-w-4xl w-full mx-4"
-              initial={{ y: 12, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: 12, opacity: 0 }}
+              initial={{ scale: 0.93, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.93, opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              className="relative mx-4 w-full max-w-3xl"
+              onClick={(e) => e.stopPropagation()}
             >
               <button
-                className="absolute top-3 right-3 z-50 rounded-full bg-black/50 p-2 text-white"
                 onClick={closeLightbox}
-                aria-label="Cerrar galería"
+                className="absolute -right-3 -top-3 z-50 flex h-9 w-9 items-center justify-center rounded-full border border-brand-cream/30 bg-stone-900 text-stone-200 shadow-lg transition hover:bg-stone-800"
+                aria-label="Cerrar"
               >
-                <X className="h-5 w-5" />
+                <X className="h-4 w-4" />
               </button>
-
               <div className="relative overflow-hidden rounded-2xl bg-black">
-                <img src={lightboxImages[lightboxIndex]} alt={`Imagen ${lightboxIndex + 1}`} className="w-full max-h-[75vh] object-contain mx-auto" />
+                <img src={lightboxImages[lightboxIndex]} alt={`Imagen ${lightboxIndex + 1}`} className="w-full rounded-2xl object-contain shadow-2xl" style={{ maxHeight: '75vh' }} />
 
                 {lightboxImages.length > 1 && (
                   <>
@@ -298,6 +311,8 @@ export default function TourismSection({ arrecifesPlaces = defaultPlaces }) {
                   </>
                 )}
               </div>
+
+              <p className="mt-4 text-center font-display text-xl text-brand-cream">{activePlace?.name}</p>
             </motion.div>
           </motion.div>
         )}
