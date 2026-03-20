@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { MapPin, Trophy } from 'lucide-react'
+import { MapPin, Trophy, X, ChevronLeft, ChevronRight } from 'lucide-react'
 
 const defaultPlaces = [
   {
@@ -87,10 +87,36 @@ const defaultPlaces = [
 
 export default function TourismSection({ arrecifesPlaces = defaultPlaces }) {
   const [activePlaceId, setActivePlaceId] = useState(arrecifesPlaces[0]?.id)
+  const [lightboxOpen, setLightboxOpen] = useState(false)
+  const [lightboxIndex, setLightboxIndex] = useState(0)
+  const [lightboxImages, setLightboxImages] = useState([])
 
   const activePlace = arrecifesPlaces.find((p) => p.id === activePlaceId) || arrecifesPlaces[0]
 
   const toggle = (id) => setActivePlaceId((prev) => (prev === id ? null : id))
+
+  useEffect(() => {
+    if (!lightboxOpen) return
+    function onKey(e) {
+      if (e.key === 'Escape') setLightboxOpen(false)
+      if (e.key === 'ArrowRight') setLightboxIndex((i) => Math.min(i + 1, lightboxImages.length - 1))
+      if (e.key === 'ArrowLeft') setLightboxIndex((i) => Math.max(i - 1, 0))
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [lightboxOpen, lightboxImages.length])
+
+  const openLightbox = (images, idx = 0) => {
+    const normalized = (images || []).map((img) => (img?.startsWith('public/') ? `/${img.replace(/^public\//, '')}` : img))
+    setLightboxImages(normalized)
+    setLightboxIndex(idx)
+    setLightboxOpen(true)
+  }
+
+  const closeLightbox = () => setLightboxOpen(false)
+
+  const showPrev = () => setLightboxIndex((i) => Math.max(i - 1, 0))
+  const showNext = () => setLightboxIndex((i) => Math.min(i + 1, lightboxImages.length - 1))
 
   return (
     <section id="turismo" className="w-full noise-dark relative bg-grain [background-size:8px_8px] text-brand-cream font-display py-10 px-4 md:px-8 text-base md:text-lg">
@@ -146,7 +172,14 @@ export default function TourismSection({ arrecifesPlaces = defaultPlaces }) {
                               const spanClass = i === 0 ? 'col-span-2 row-span-2' : ''
                               return (
                                 <div key={i} className={`${spanClass} relative w-full h-full overflow-hidden rounded-lg`}>
-                                  <img src={src} alt={`${place.name} ${i + 1}`} className="absolute inset-0 w-full h-full object-cover object-center" />
+                                  <button
+                                    type="button"
+                                    onClick={() => openLightbox((place.images || []).slice(0, 3), i)}
+                                    className="absolute inset-0 w-full h-full"
+                                    aria-label={`Abrir galería de ${place.name} imagen ${i + 1}`}
+                                  >
+                                    <img src={src} alt={`${place.name} ${i + 1}`} className="absolute inset-0 w-full h-full object-cover object-center" />
+                                  </button>
                                 </div>
                               )
                             })}
@@ -180,11 +213,18 @@ export default function TourismSection({ arrecifesPlaces = defaultPlaces }) {
                 const spanClass = i === 0 ? 'col-span-2 row-span-2 md:col-span-2 md:row-span-2' : ''
                 return (
                   <div key={i} className={`${spanClass} relative w-full h-full overflow-hidden rounded-lg`}>
-                    <img
-                      src={src}
-                      alt={`${activePlace.name} ${i + 1}`}
-                      className="absolute inset-0 w-full h-full object-cover object-center"
-                    />
+                    <button
+                      type="button"
+                      onClick={() => openLightbox((activePlace.images || []).slice(0, 3), i)}
+                      className="absolute inset-0 w-full h-full"
+                      aria-label={`Abrir galería de ${activePlace.name} imagen ${i + 1}`}
+                    >
+                      <img
+                        src={src}
+                        alt={`${activePlace.name} ${i + 1}`}
+                        className="absolute inset-0 w-full h-full object-cover object-center"
+                      />
+                    </button>
                   </div>
                 )
               })}
@@ -212,6 +252,56 @@ export default function TourismSection({ arrecifesPlaces = defaultPlaces }) {
           </div>
         </div>
       </div>
+      <AnimatePresence>
+        {lightboxOpen && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <motion.div
+              className="relative max-w-4xl w-full mx-4"
+              initial={{ y: 12, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: 12, opacity: 0 }}
+            >
+              <button
+                className="absolute top-3 right-3 z-50 rounded-full bg-black/50 p-2 text-white"
+                onClick={closeLightbox}
+                aria-label="Cerrar galería"
+              >
+                <X className="h-5 w-5" />
+              </button>
+
+              <div className="relative overflow-hidden rounded-2xl bg-black">
+                <img src={lightboxImages[lightboxIndex]} alt={`Imagen ${lightboxIndex + 1}`} className="w-full max-h-[75vh] object-contain mx-auto" />
+
+                {lightboxImages.length > 1 && (
+                  <>
+                    <button
+                      className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-black/40 p-2 text-white"
+                      onClick={showPrev}
+                      aria-label="Imagen anterior"
+                      disabled={lightboxIndex === 0}
+                    >
+                      <ChevronLeft className="h-6 w-6" />
+                    </button>
+                    <button
+                      className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-black/40 p-2 text-white"
+                      onClick={showNext}
+                      aria-label="Imagen siguiente"
+                      disabled={lightboxIndex === lightboxImages.length - 1}
+                    >
+                      <ChevronRight className="h-6 w-6" />
+                    </button>
+                  </>
+                )}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   )
 }
