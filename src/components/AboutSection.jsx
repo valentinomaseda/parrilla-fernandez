@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 
-const aboutImage =
-  "/aboutus.jpg";
+const aboutVideo = "/parri historia 3 .mp4";
 
 export default function AboutSection() {
   return (
@@ -38,12 +37,15 @@ export default function AboutSection() {
           transition={{ duration: 0.55, delay: 0.05 }}
           className="overflow-hidden rounded-2xl border border-wood-dark/20"
         >
-          <img
-            src={aboutImage}
+          <video
+            src={aboutVideo}
             alt="Historia de parrilla tradicional argentina"
             loading="lazy"
             decoding="async"
             className="h-full w-full object-cover sepia-[0.28] saturate-[1.1]"
+            autoPlay
+            loop
+            muted
           />
         </motion.div>
       </div>

@@ -5,6 +5,7 @@ import AboutSection from "./components/AboutSection";
 import MenuSection from "./components/MenuSection";
 import GallerySection from "./components/GallerySection";
 import ValueInfoSection from "./components/ValueInfoSection";
+import RacingLegacy from "./components/RacingLegacy";
 import LocationHoursSection from "./components/LocationHoursSection";
 import Footer from "./components/Footer";
 import StatsSection from "./components/StatsSection";
@@ -18,23 +19,18 @@ export default function App() {
       <HeroSection />
       <AboutSection />
       <StatsSection />
-      <motion.main
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true, amount: 0.1 }}
-        transition={{ duration: 0.5 }}
-        className="noise-dark relative bg-grain [background-size:8px_8px]"
-      >
+      <div className="noise-dark relative bg-grain [background-size:8px_8px]">
         <MenuSection />
         <GallerySection />
         <ValueInfoSection />
+        <RacingLegacy />
         <LocationHoursSection />
         <TourismSection />
         <div className="max-w-7xl mx-auto">
           <div aria-hidden="true" className="h-0.5 bg-gradient-to-r from-transparent via-brand-cream/60 to-transparent rounded-full" />
         </div>
         <ReviewsSection />
-      </motion.main>
+      </div>
 
       <Footer />
     </div>

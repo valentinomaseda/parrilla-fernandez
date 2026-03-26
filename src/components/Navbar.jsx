@@ -7,9 +7,11 @@ const links = [
   { label: "Nuestra historia", href: "#historia" },
   { label: "Menu", href: "#menu" },
   { label: "Galeria", href: "#galeria" },
+  { label: "Automovilismo", href: "#automovilismo" },
   { label: "Ubicacion", href: "#ubicacion" },
   { label: "Turismo", href: "#turismo" },
   { label: "Opiniones", href: "#reviews" },
+
 ];
 
 const reserveHref =
@@ -22,7 +24,7 @@ export default function Navbar() {
 
   return (
     <nav className="fixed inset-x-0 top-0 z-50 bg-gradient-to-b from-black/70 to-transparent">
-      <div className="mx-auto max-w-6xl px-4 pt-3 sm:px-8">
+      <div style={{ position: "relative" }} className="mx-auto max-w-6xl px-4 pt-3 sm:px-8">
         <div className="flex items-center justify-between rounded-2xl border border-brand-cream/20 bg-black/55 px-3 py-2 backdrop-blur-md">
           <a
             href="#inicio"

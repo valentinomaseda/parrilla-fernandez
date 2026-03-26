@@ -5,26 +5,45 @@ import { X } from "lucide-react";
 
 const galleryItems = [
   {
-    title: "Cocción a la estaca",
-    image: "/estaca.jpg",
+    title: "Mística fierrera",
+    media: "/Parrilla Fernandez Rell Bajada 1.mp4",
     span: "sm:col-span-2 sm:row-span-2",
   },
   {
+    title: "Cocción a la estaca",
+    media: "/Parri Historia 3.mp4",
+    span: "sm:col-span-1",
+    poster: "/estaca.jpg",
+  },
+  {
     title: "Chimenea encendida",
-    image:
-      "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=70",
+    media: "/Parri Historia 1.mp4",
     span: "sm:col-span-1",
   },
   {
     title: "Mesas de madera",
-    image:
-      "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=900&q=70",
+    media: "/Parri Historia 2.mp4",
     span: "sm:col-span-1",
   },
   {
-    title: "Mística fierrera",
-    image: "/auto.jpg",
-    span: "sm:col-span-2",
+    title: "Momentos inolvidables",
+    media: "/Cumple.mp4",
+    span: "sm:col-span-1",
+  },
+  {
+    title: "Sabores únicos",
+    media: "/C1180.mp4",
+    span: "sm:col-span-1",
+  },
+  {
+    title: "Cortes seleccionados",
+    media: "/Historia Carne.mp4",
+    span: "sm:col-span-1",
+  },
+  {
+    title: "Parrillada completa",
+    media: "/Parri Historia 1  (1).mp4",
+    span: "sm:col-span-1",
   },
 ];
 
@@ -54,28 +73,46 @@ export default function GallerySection() {
       />
 
       <div className="grid auto-rows-[220px] grid-cols-1 gap-4 sm:grid-cols-3">
-        {galleryItems.map((item, index) => (
-          <motion.figure
-            key={item.title}
-            initial={{ opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 0.45, delay: index * 0.06 }}
-            className={`group relative cursor-pointer overflow-hidden rounded-2xl border border-brand-cream/20 ${item.span}`}
-            onClick={() => handleImageClick(item.image, item.title)}
-          >
-            <img
-              src={item.image}
-              alt={item.title}
-              loading="lazy"
-              decoding="async"
-              className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-            />
-            <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent px-4 py-3 text-sm text-brand-cream">
-              {item.title}
-            </figcaption>
-          </motion.figure>
-        ))}
+        {galleryItems.map((item, index) => {
+          const isVideo =
+            item.media && item.media.toLowerCase().endsWith(".mp4");
+          return (
+            <motion.figure
+              key={`${item.title}-${index}`}
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{ duration: 0.45, delay: index * 0.06 }}
+              className={`group relative cursor-pointer overflow-hidden rounded-2xl border border-brand-cream/20 ${item.span}`}
+              onClick={() => handleImageClick(item.media, item.title)}
+            >
+              {isVideo ? (
+                <video
+                  src={item.media}
+                  poster={item.poster}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                />
+              ) : (
+                <img
+                  src={item.media}
+                  alt={item.title}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                />
+              )}
+
+              <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent px-4 py-3 text-sm text-brand-cream">
+                {item.title}
+              </figcaption>
+            </motion.figure>
+          );
+        })}
       </div>
 
       {/* Lightbox */}
@@ -104,12 +141,22 @@ export default function GallerySection() {
               >
                 <X className="h-4 w-4" />
               </button>
-              <img
-                src={selectedImage}
-                alt={selectedTitle}
-                className="w-full rounded-2xl object-contain shadow-2xl"
-                style={{ maxHeight: "75vh" }}
-              />
+              {selectedImage.toLowerCase().endsWith(".mp4") ? (
+                <video
+                  src={selectedImage}
+                  className="w-full rounded-2xl object-contain shadow-2xl"
+                  style={{ maxHeight: "75vh" }}
+                  controls
+                  autoPlay
+                />
+              ) : (
+                <img
+                  src={selectedImage}
+                  alt={selectedTitle}
+                  className="w-full rounded-2xl object-contain shadow-2xl"
+                  style={{ maxHeight: "75vh" }}
+                />
+              )}
               <p className="mt-4 text-center font-display text-xl text-brand-cream">
                 {selectedTitle}
               </p>

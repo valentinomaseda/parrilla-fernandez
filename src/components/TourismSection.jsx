@@ -11,9 +11,9 @@ const defaultPlaces = [
     iframeSrc:
       'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3305.0809752052883!2d-60.11133442455219!3d-34.067438429374256!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b99ddcebfc1b49%3A0x1468be4a515ae23b!2sPlaza%20Bartolom%C3%A9%20Mitre!5e0!3m2!1ses-419!2sar!4v1773949319055!5m2!1ses-419!2sar',
     images: [
+      '/mitre.jpg',
       '/Arco-pLAZA.jpg',
       '/Arrecifes-Iglesia-768x431.jpg',
-      '/mitre.jpg'
     ]
   },
   {

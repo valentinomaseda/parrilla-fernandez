@@ -20,6 +20,7 @@ export default function HeroSection() {
     <header
       id="inicio"
       ref={ref}
+      style={{ position: "relative" }}
       className="relative isolate min-h-screen scroll-mt-24 overflow-hidden"
     >
       {/* Parallax image */}
@@ -86,7 +87,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.3 }}
-          className="mt-10"
+          className="mt-10 flex items-center gap-4"
         >
           <a
             className="btn"
@@ -95,6 +96,14 @@ export default function HeroSection() {
             rel="noreferrer"
           >
             RESERVAR MESA
+          </a>
+
+          <a
+            className="btn btn-ghost"
+            href="#menu"
+            aria-label="Ver menú completo"
+          >
+            VER MENÚ
           </a>
         </motion.div>
 
