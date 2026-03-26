@@ -69,7 +69,7 @@ const wallItems = [
   {
     id: 1,
     title: "Agustín Canapino",
-    media: "/canap.mp4",
+    media: "/Canap.mp4",
     type: "video",
     poster: "/estaca.jpg",
     isVertical: true,
