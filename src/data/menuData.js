@@ -28,10 +28,10 @@ export const menuSections = [
           "parrillada.jpeg",
       },
       {
-        name: "Asado del asador",
-        detail: "Tira premium coccion lenta al fuego",
+        name: "Achuras",
+        detail: "Morcilla, chinchulines, riñones y mollejas",
         image:
-          "parrilla.jpg",
+          "chinchu.jpeg",
       },
     ],
   },
@@ -58,10 +58,10 @@ export const menuSections = [
     label: "Postres",
     items: [
       {
-        name: "Flan de la casa",
-        detail: "Con crema batida o dulce de leche",
+        name: "Tiramisú",
+        detail: "Clásico italiano con bizcochos, café y crema de mascarpone",
         image:
-          "flan.jpg",
+          "tiramisu.jpeg",
       },
       {
         name: "Don Pedro",
