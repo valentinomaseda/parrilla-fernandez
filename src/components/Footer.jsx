@@ -1,4 +1,4 @@
-import { Instagram, MapPin, Phone, Clock3 } from "lucide-react";
+import { Instagram, MapPin, Phone, Clock3, Facebook } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -26,19 +26,31 @@ export default function Footer() {
         </div>
 
         <div>
-          <p className="text-xs uppercase tracking-[0.3em] text-brand-cream/80">Navegacion</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-brand-cream/80">Navegación</p>
           <div className="mt-4 space-y-2 text-sm text-stone-300">
             <a href="#inicio" className="block transition hover:text-brand-cream">
               Inicio
             </a>
-            <a href="#menu" className="block transition hover:text-brand-cream">
-              Menu
+            <a href="#historia" className="block transition hover:text-brand-cream">
+              Nuestra historia
             </a>
-            <a href="#experiencia" className="block transition hover:text-brand-cream">
-              Experiencia
+            <a href="#menu" className="block transition hover:text-brand-cream">
+              Menú
+            </a>
+            <a href="#galeria" className="block transition hover:text-brand-cream">
+              Galería
+            </a>
+            <a href="#automovilismo" className="block transition hover:text-brand-cream">
+              Automovilismo
             </a>
             <a href="#ubicacion" className="block transition hover:text-brand-cream">
-              Ubicacion
+              Ubicación
+            </a>
+            <a href="#turismo" className="block transition hover:text-brand-cream">
+              Turismo
+            </a>
+            <a href="#reviews" className="block transition hover:text-brand-cream">
+              Reseñas
             </a>
           </div>
         </div>
@@ -60,9 +72,17 @@ export default function Footer() {
             >
               <Instagram className="h-4 w-4 text-brand-red" /> @parrillafernandez1
             </a>
+            <a
+              href="https://www.facebook.com/parrillafernandez1"
+              target="_blank"
+              rel="noreferrer"
+              className=" flex items-center gap-2 transition hover:text-white"
+            >
+              <Facebook className="h-4 w-4 text-brand-red" /> Parrilla Fernández
+            </a>
             <p className="flex items-start gap-2">
               <Clock3 className="mt-0.5 h-4 w-4 text-brand-red" />
-              <span>Mar-Sab: 12:00-15:00 y 20:00-00:00 | Dom: 12:00-15:30</span>
+              <span>Mar-Dom: 12:00-16:00 y 20:00-00:00</span>
             </p>
           </div>
         </div>

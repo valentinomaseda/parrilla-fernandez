@@ -11,11 +11,13 @@ import Footer from "./components/Footer";
 import StatsSection from "./components/StatsSection";
 import TourismSection from "./components/TourismSection";
 import ReviewsSection from "./components/ReviewsSection";
+import MobileScrollIndicator from "./components/MobileScrollIndicator";
 
 export default function App() {
   return (
     <div className="min-h-screen bg-wood-dark text-stone-100">
       <Navbar />
+      <MobileScrollIndicator />
       <HeroSection />
       <AboutSection />
       <StatsSection />

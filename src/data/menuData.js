@@ -25,7 +25,7 @@ export const menuSections = [
         name: "Parrillada Libre",
         detail: "Cortes varios, achuras y guarnicion campestre",
         image:
-          "parrillada.jpg",
+          "parrillada.jpeg",
       },
       {
         name: "Asado del asador",

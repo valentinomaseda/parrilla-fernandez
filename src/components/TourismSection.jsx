@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { MapPin, Trophy, X, ChevronLeft, ChevronRight } from 'lucide-react'
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { MapPin, Trophy, X, ChevronLeft, ChevronRight, ChevronDown, Compass } from 'lucide-react';
 
 const defaultPlaces = [
   {
@@ -8,150 +8,134 @@ const defaultPlaces = [
     name: 'Plaza Bartolomé Mitre',
     tagline: 'Plaza histórica',
     description: 'Plaza histórica en el centro de la ciudad, punto de encuentro y actividades culturales.',
-    iframeSrc:
-      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3305.0809752052883!2d-60.11133442455219!3d-34.067438429374256!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b99ddcebfc1b49%3A0x1468be4a515ae23b!2sPlaza%20Bartolom%C3%A9%20Mitre!5e0!3m2!1ses-419!2sar!4v1773949319055!5m2!1ses-419!2sar',
-    images: [
-      '/mitre.jpg',
-      '/Arco-pLAZA.jpg',
-      '/Arrecifes-Iglesia-768x431.jpg',
-    ]
+    iframeSrc: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3299.789128913988!2d-60.111812!3d-34.06214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b9c1d0a5e0b7a9%3A0xc3d0c9f1a2a1a1a!2sPlaza%20Mitre!5e0!3m2!1ses!2sar!4v1700000000000!5m2!1ses!2sar',
+    images: ['/mitre.jpg', '/Arco-pLAZA.jpg', '/Arrecifes-Iglesia-768x431.jpg']
   },
   {
     id: 'molino_harinero',
-    name: 'Molino Harinero (Ruinas)',
+    name: 'Molino Harinero',
     tagline: 'Ruinas históricas',
-    description: 'Restos del antiguo molino; punto de interés arqueológico y fotográfico.',
-    iframeSrc:
-      'https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1702.1967544972163!2d-60.10828007563649!3d-34.07314867673113!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2sar!4v1773949362010!5m2!1ses-419!2sar',
-    images: [
-      'public/arrecifes-molino-768x517.jpg',
-      'public/arrecifes-molino-2-edited-1-768x1024.jpg',
-      'public/arrecifes-molino-3.jpg'
-    ]
+    description: 'Restos del antiguo molino; un punto de interés arqueológico y fotográfico único a orillas del río.',
+    iframeSrc: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3299.789128913988!2d-60.111812!3d-34.06214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzTCsDAzJzQzLjciUyA2MMKwMDYnNDIuNSJX!5e0!3m2!1ses!2sar!4v1700000000000!5m2!1ses!2sar',
+    images: ['public/arrecifes-molino-768x517.jpg', 'public/arrecifes-molino-2-edited-1-768x1024.jpg', 'public/arrecifes-molino-3.jpg']
   },
   {
     id: 'circuito_costanero',
     name: 'Circuito Costanero',
     tagline: 'Automovilismo y naturaleza',
-    description: 'El Circuito Costanero “Daniel Alberti” en Arrecifes, Buenos Aires, es un espacio recreativo y automovilístico destacado, situado a orillas del río Arrecifes. Es un punto de encuentro clave para competencias zonales, exhibiciones y eventos turísticos como la Fiesta Provincial del Automovilismo, ofreciendo un entorno natural con parrillas y senderos.',
-    iframeSrc:
-      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2883.4521944212793!2d-60.108721078411634!3d-34.07314073558418!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b99deed033714f%3A0x2558615062181b4f!2sCircuito%20Costanero%20de%20Arrecifes%20%22Daniel%20Alberti%22!5e0!3m2!1ses-419!2sar!4v1773949389801!5m2!1ses-419!2sar',
-    images: [
-      '/circuito.jpg',
-      '/circuito2.jpg',
-      '/circuito3.jpg'
-    ]
+    description: 'El Circuito "Daniel Alberti" es un espacio recreativo y automovilístico destacado, situado a orillas del río Arrecifes. Es punto de encuentro clave para competencias zonales.',
+    iframeSrc: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3299.789128913988!2d-60.111812!3d-34.06214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzTCsDAzJzQzLjciUyA2MMKwMDYnNDIuNSJX!5e0!3m2!1ses!2sar!4v1700000000000!5m2!1ses!2sar',
+    images: ['/circuito.jpg', '/circuito2.jpg', '/circuito3.jpg']
   },
   {
     id: 'museo_arrecifes',
-    name: 'Museo de Arrecifes (Centro Cultural)',
+    name: 'Centro Cultural',
     tagline: 'Cultura y patrimonio',
-    description: 'El Centro Cultural de Arrecifes, situado en el antiguo mercado municipal, es el epicentro del patrimonio histórico y artístico local. Alberga gran parte de la hisotria automovilística de la ciudad.',
-    iframeSrc:
-      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3305.188983344558!2d-60.11062652455238!3d-34.06466942923005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b99ddb46ccd783%3A0xa8bfe36efe0de6c6!2sCentro%20Cultural%20Arrecifes!5e0!3m2!1ses-419!2sar!4v1773949425687!5m2!1ses-419!2sar',
-    images: [
-      'public/Centro-Cultural.jpg',
-      '/museo.jpg',
-      '/museo2.jpg'
-    ]
+    description: 'Ubicado en el antiguo mercado municipal, es el epicentro del patrimonio histórico y artístico local. Alberga gran parte de la historia automovilística de la ciudad.',
+    iframeSrc: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3299.789128913988!2d-60.111812!3d-34.06214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzTCsDAzJzQzLjciUyA2MMKwMDYnNDIuNSJX!5e0!3m2!1ses!2sar!4v1700000000000!5m2!1ses!2sar',
+    images: ['public/Centro-Cultural.jpg', '/museo.jpg', '/museo2.jpg']
   },
   {
     id: 'tajamar',
     name: 'Tajamar',
     tagline: 'Espacio natural',
-    description: 'Las Ruinas del Tajamar en Arrecifes, Buenos Aires, son los vestigios de una antigua esclusa del proyectado Canal del Norte, construida a principios del siglo XX para navegación y generación eléctrica.',
-    iframeSrc:
-      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3304.8560563477754!2d-60.11603352455197!3d-34.073204029674564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b99d78edd8404b%3A0xcc1fc7af6faf1b82!2sEl%20TAJAMAR!5e0!3m2!1ses-419!2sar!4v1773949464667!5m2!1ses-419!2sar',
-    images: [
-      'public/Arrecifes-Tajamar-768x432.jpg',
-      'public/Tajamar.jpg',
-      'public/tajamar3.jpg'
-    ]
+    description: 'Las Ruinas del Tajamar son los vestigios de una antigua esclusa del proyectado Canal del Norte, construida a principios del siglo XX para navegación.',
+    iframeSrc: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3299.789128913988!2d-60.111812!3d-34.06214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzTCsDAzJzQzLjciUyA2MMKwMDYnNDIuNSJX!5e0!3m2!1ses!2sar!4v1700000000000!5m2!1ses!2sar',
+    images: ['public/Arrecifes-Tajamar-768x432.jpg', 'public/Tajamar.jpg', 'public/tajamar3.jpg']
   },
   {
     id: 'balneario',
     name: 'Balneario Municipal',
     tagline: 'Punto para tomar mate',
-    description:
-      'Un lugar ideal para tomar un mate en familia, con sombra natural y mesas para disfrutar del ambiente. Lugar tradicional para paseos y actividades al aire libre.',
-    coords: { lat: -34.064, lng: -60.474 },
-    iframeSrc:
-      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3304.7971488854946!2d-60.10982752455192!3d-34.07471392975307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b99de61c019159%3A0xede8923320cb5b8b!2sBalneario%20Municipal%20de%20Arrecifes!5e0!3m2!1ses-419!2sar!4v1773949492786!5m2!1ses-419!2sar',
-    images: [
-      '/balneario2.jpg',
-      'public/balneario-noche-768x960.jpg',
-      'public/balneario3.jpg',
-    ]
+    description: 'Un lugar ideal para tomar un mate en familia, con sombra natural y mesas para disfrutar del ambiente. Lugar tradicional para paseos al aire libre.',
+    iframeSrc: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3299.789128913988!2d-60.111812!3d-34.06214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzTCsDAzJzQzLjciUyA2MMKwMDYnNDIuNSJX!5e0!3m2!1ses!2sar!4v1700000000000!5m2!1ses!2sar',
+    images: ['/balneario2.jpg', 'public/balneario-noche-768x960.jpg', 'public/balneario3.jpg']
   }
-]
+];
+
+// Limpiador de rutas de imagen (para evitar errores con el prefijo "public/")
+const cleanImgPath = (img) => img?.startsWith('public/') ? `/${img.replace(/^public\//, '')}` : img;
 
 export default function TourismSection({ arrecifesPlaces = defaultPlaces }) {
-  const [activePlaceId, setActivePlaceId] = useState(arrecifesPlaces[0]?.id)
-  const [lightboxOpen, setLightboxOpen] = useState(false)
-  const [lightboxIndex, setLightboxIndex] = useState(0)
-  const [lightboxImages, setLightboxImages] = useState([])
+  const [activePlaceId, setActivePlaceId] = useState(arrecifesPlaces[0]?.id);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+  const [lightboxImages, setLightboxImages] = useState([]);
 
-  const activePlace = arrecifesPlaces.find((p) => p.id === activePlaceId) || arrecifesPlaces[0]
+  const activePlace = arrecifesPlaces.find((p) => p.id === activePlaceId) || arrecifesPlaces[0];
 
-  const toggle = (id) => setActivePlaceId((prev) => (prev === id ? null : id))
+  const toggle = (id) => setActivePlaceId((prev) => (prev === id ? null : id));
 
+  // Manejo del Lightbox con teclado
   useEffect(() => {
-    if (!lightboxOpen) return
+    if (!lightboxOpen) return;
     function onKey(e) {
-      if (e.key === 'Escape') setLightboxOpen(false)
-      if (e.key === 'ArrowRight') setLightboxIndex((i) => Math.min(i + 1, lightboxImages.length - 1))
-      if (e.key === 'ArrowLeft') setLightboxIndex((i) => Math.max(i - 1, 0))
+      if (e.key === 'Escape') setLightboxOpen(false);
+      if (e.key === 'ArrowRight') setLightboxIndex((i) => Math.min(i + 1, lightboxImages.length - 1));
+      if (e.key === 'ArrowLeft') setLightboxIndex((i) => Math.max(i - 1, 0));
     }
-    window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
-  }, [lightboxOpen, lightboxImages.length])
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [lightboxOpen, lightboxImages.length]);
 
   const openLightbox = (images, idx = 0) => {
-    const normalized = (images || []).map((img) => (img?.startsWith('public/') ? `/${img.replace(/^public\//, '')}` : img))
-    setLightboxImages(normalized)
-    setLightboxIndex(idx)
-    setLightboxOpen(true)
-  }
+    setLightboxImages(images.map(cleanImgPath));
+    setLightboxIndex(idx);
+    setLightboxOpen(true);
+  };
 
-  const closeLightbox = () => setLightboxOpen(false)
-
-  const showPrev = () => setLightboxIndex((i) => Math.max(i - 1, 0))
-  const showNext = () => setLightboxIndex((i) => Math.min(i + 1, lightboxImages.length - 1))
+  const closeLightbox = () => setLightboxOpen(false);
+  const showPrev = () => setLightboxIndex((i) => Math.max(i - 1, 0));
+  const showNext = () => setLightboxIndex((i) => Math.min(i + 1, lightboxImages.length - 1));
 
   return (
-    <section id="turismo" className="w-full noise-dark relative bg-grain [background-size:8px_8px] text-brand-cream font-display py-10 px-4 md:px-8 text-base md:text-lg">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-8">
-        {/* Left: Accordion */}
-        <div className="space-y-4">
-            <div className="flex items-center gap-4">
-              <span className="ml-0 inline-flex items-center gap-3">
-                <Trophy className="text-brand-cream" size={28} />
-                <span className="text-4xl md:text-5xl font-extrabold tracking-tight">Cuna de Campeones</span>
-              </span>
-            </div>
-            <span className='text-2xl md:text-3xl font-semibold'>Lugares de interés</span>
+    <section id="turismo" className="relative w-full bg-[#141211] py-24 px-6 md:px-10 overflow-hidden">
+      {/* Ruido de fondo */}
+      <div className="absolute inset-0 noise-dark opacity-30 pointer-events-none" />
+
+      <div className="relative max-w-7xl mx-auto z-10">
+        
+        {/* CABECERA */}
+        <header className="mb-16">
+          <div className="flex items-center gap-3 text-brand-red mb-4">
+            <Compass size={20} className="animate-pulse" />
+            <span className="text-[10px] font-black uppercase tracking-[0.3em]">Descubrí nuestra ciudad</span>
+          </div>
+          <h2 className="text-5xl md:text-7xl font-display text-brand-cream leading-none">
+            Visitar <span className="text-stone-400 italic">Arrecifes</span>
+          </h2>
+        </header>
+
+        {/* LAYOUT PRINCIPAL */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:items-start">
+          
+          {/* COLUMNA IZQUIERDA: ACORDEÓN */}
+          <div className="lg:col-span-5 space-y-3">
             {arrecifesPlaces.map((place) => {
-              const isActive = place.id === activePlaceId
+              const isActive = place.id === activePlaceId;
               return (
-                <div
-                  key={place.id}
-                  className="rounded-3xl bg-wood-dark/70 p-4 shadow-lg border border-brand-cream/10"
-                >
+                <div key={place.id} className={`rounded-3xl border transition-all duration-300 ${isActive ? 'bg-stone-900/60 border-brand-red/30 shadow-lg' : 'bg-transparent border-white/5 hover:bg-white/[0.02]'}`}>
                   <button
                     onClick={() => toggle(place.id)}
-                    className="w-full flex items-center justify-between gap-4 text-left"
+                    className="w-full flex items-center justify-between p-5 lg:p-6 text-left"
                     aria-expanded={isActive}
                   >
                     <div className="flex items-center gap-4">
-                      <div className="p-3 bg-brand-cream/10 rounded-2xl">
-                        <MapPin className="text-brand-cream" size={20} />
+                      <div className={`h-12 w-12 rounded-full flex items-center justify-center border transition-colors duration-300 shrink-0 ${isActive ? 'bg-brand-red/10 border-brand-red text-brand-red' : 'bg-white/5 border-white/10 text-stone-400'}`}>
+                        <MapPin size={20} />
                       </div>
                       <div>
-                        <div className="text-xl md:text-2xl font-semibold">{place.name}</div>
-                        <div className="text-base text-brand-cream/90">{place.tagline}</div>
+                        <h3 className={`font-display text-2xl transition-colors duration-300 ${isActive ? 'text-brand-cream' : 'text-stone-300'}`}>
+                          {place.name}
+                        </h3>
+                        <p className="text-[10px] uppercase tracking-widest text-stone-500 mt-1 font-bold">
+                          {place.tagline}
+                        </p>
                       </div>
                     </div>
-                    <div className="text-brand-cream/80">{isActive ? '−' : '+'}</div>
+                    <motion.div animate={{ rotate: isActive ? 180 : 0 }} transition={{ duration: 0.3 }} className={isActive ? 'text-brand-red' : 'text-stone-500'}>
+                      <ChevronDown size={24} />
+                    </motion.div>
                   </button>
 
                   <AnimatePresence initial={false}>
@@ -160,163 +144,132 @@ export default function TourismSection({ arrecifesPlaces = defaultPlaces }) {
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: 'auto', opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.35 }}
-                        className="overflow-hidden mt-3 text-sm"
+                        transition={{ duration: 0.35, ease: "easeInOut" }}
+                        className="overflow-hidden px-5 lg:px-6 pb-6"
                       >
-                        <p className="mb-3 text-base">{place.description}</p>
-                        {/* Mobile visuals: show gallery + map under the item on small screens */}
-                        <div className="md:hidden mt-3">
-                          <div className="grid grid-cols-3 gap-2 h-40 rounded-2xl overflow-hidden">
-                            {(place.images || []).slice(0, 3).map((img, i) => {
-                              const src = img?.startsWith('public/') ? `/${img.replace(/^public\//, '')}` : img
-                              const spanClass = i === 0 ? 'col-span-2 row-span-2' : ''
-                              return (
-                                <motion.figure
-                                  key={i}
-                                  initial={{ opacity: 0, y: 12 }}
-                                  whileInView={{ opacity: 1, y: 0 }}
-                                  viewport={{ once: true, amount: 0.25 }}
-                                  transition={{ duration: 0.35, delay: i * 0.04 }}
-                                  className={`group relative cursor-pointer overflow-hidden rounded-2xl border border-brand-cream/20 ${spanClass}`}
-                                  onClick={() => openLightbox((place.images || []).slice(0, 3), i)}
-                                >
-                                  <img
-                                    src={src}
-                                    alt={`${place.name} ${i + 1}`}
-                                    loading="lazy"
-                                    decoding="async"
-                                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                                  />
-                                </motion.figure>
-                              )
-                            })}
-                          </div>
+                        <p className="text-stone-300 text-sm leading-relaxed font-light mt-2 border-t border-white/5 pt-4">
+                          {place.description}
+                        </p>
 
-                          <div className="mt-3 h-48 rounded-2xl overflow-hidden">
-                              <iframe
-                                title={`Ubicación de ${place.name} en Arrecifes`}
-                                src={place.iframeSrc ? place.iframeSrc : `https://www.google.com/maps?q=${place.coords?.lat},${place.coords?.lng}&output=embed`}
-                                className="w-full h-full border-0"
-                                loading="lazy"
-                                referrerPolicy="no-referrer-when-downgrade"
-                                allowFullScreen
-                              />
+                        {/* VISUALES MOBILE: Scroll horizontal de fotos + Mapa */}
+                        <div className="lg:hidden mt-6 space-y-4">
+                          <div className="flex overflow-x-auto gap-3 pb-4 snap-x snap-mandatory scrollbar-hide -mx-5 px-5">
+                            {place.images?.map((img, i) => (
+                              <div key={i} className="relative h-32 w-48 shrink-0 snap-center rounded-2xl overflow-hidden cursor-pointer border border-white/10" onClick={() => openLightbox(place.images, i)}>
+                                <img src={cleanImgPath(img)} alt="" className="w-full h-full object-cover absolute inset-0" />
+                              </div>
+                            ))}
+                          </div>
+                          <div className="h-48 w-full rounded-2xl overflow-hidden border border-white/10 relative">
+                            <iframe
+                              title={`Ubicación de ${place.name}`}
+                              src={place.iframeSrc}
+                              className="absolute inset-0 w-full h-full border-0 grayscale-[0.2] contrast-125"
+                              loading="lazy"
+                            />
                           </div>
                         </div>
                       </motion.div>
                     )}
                   </AnimatePresence>
                 </div>
-              )
+              );
             })}
           </div>
 
-        {/* Right: Visuals */}
-        <div className="space-y-4 hidden md:block">
-          <div className="rounded-3xl bg-wood-dark/60 p-4 shadow-lg border border-brand-cream/10">
-            <div className="grid grid-cols-3 gap-2 h-48 md:h-64 rounded-2xl overflow-hidden">
-              {(activePlace.images || []).slice(0, 3).map((img, i) => {
-                const src = img?.startsWith('public/') ? `/${img.replace(/^public\//, '')}` : img
-                const spanClass = i === 0 ? 'col-span-2 row-span-2 md:col-span-2 md:row-span-2' : ''
-                return (
-                  <motion.figure
-                    key={i}
-                    initial={{ opacity: 0, y: 12 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.25 }}
-                    transition={{ duration: 0.35, delay: i * 0.04 }}
-                    className={`group relative cursor-pointer overflow-hidden rounded-2xl border border-brand-cream/20 ${spanClass}`}
-                    onClick={() => openLightbox((activePlace.images || []).slice(0, 3), i)}
-                  >
-                    <img
-                      src={src}
-                      alt={`${activePlace.name} ${i + 1}`}
-                      loading="lazy"
-                      decoding="async"
-                      className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                    />
-                  </motion.figure>
-                )
-              })}
-            </div>
-          </div>
+          {/* COLUMNA DERECHA: DESKTOP BENTO BOX (Sticky) */}
+          <div className="hidden lg:block lg:col-span-7 sticky top-32 h-[calc(100vh-10rem)] max-h-[800px] min-h-[500px]">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activePlace.id}
+                initial={{ opacity: 0, scale: 0.98 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.98 }}
+                transition={{ duration: 0.4 }}
+                className="w-full h-full bg-stone-900/40 border border-white/5 rounded-[3rem] p-6 shadow-2xl flex flex-col gap-4 backdrop-blur-sm"
+              >
+                {/* Etiqueta de lugar */}
+                <div className="absolute top-10 left-10 z-20 bg-black/60 backdrop-blur-md px-5 py-2.5 rounded-full border border-white/10 flex items-center gap-2 pointer-events-none">
+                  <MapPin size={16} className="text-brand-red" />
+                  <span className="text-xs font-bold uppercase tracking-widest text-brand-cream">{activePlace.name}</span>
+                </div>
 
-          <div className="rounded-3xl overflow-hidden shadow-lg border border-brand-cream/10">
-            <div className="bg-wood-dark/80 p-3 flex items-center gap-3">
-              <MapPin size={18} />
-              <div>
-                <div className="font-semibold">{activePlace.name}</div>
-                <div className="text-sm text-brand-cream/90">{activePlace.tagline}</div>
-              </div>
-            </div>
-            <div className="w-full h-56 md:h-72">
-              <iframe
-                title={`Ubicación de ${activePlace.name} en Arrecifes`}
-                src={activePlace.iframeSrc ? activePlace.iframeSrc : `https://www.google.com/maps?q=${activePlace.coords?.lat},${activePlace.coords?.lng}&output=embed`}
-                className="w-full h-full border-0"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                allowFullScreen
-              />
-            </div>
+                {/* FIX: Se usa flex-1 y min-h-0 para que no rompa el contenedor */}
+                {/* Mosaico de Imágenes (Bento) */}
+                <div className="grid grid-cols-3 gap-4 flex-1 min-h-0">
+                  {/* Foto Grande Izquierda */}
+                  <div className="col-span-2 rounded-[2rem] overflow-hidden relative group cursor-pointer border border-white/10 min-h-0" onClick={() => openLightbox(activePlace.images, 0)}>
+                    <img src={cleanImgPath(activePlace.images?.[0])} alt={activePlace.name} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                    <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors" />
+                  </div>
+                  {/* 2 Fotos Chicas Derecha */}
+                  <div className="col-span-1 grid grid-rows-2 gap-4 min-h-0">
+                    <div className="rounded-[1.5rem] overflow-hidden relative group cursor-pointer border border-white/10 min-h-0" onClick={() => openLightbox(activePlace.images, 1)}>
+                      <img src={cleanImgPath(activePlace.images?.[1])} alt="" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                    </div>
+                    <div className="rounded-[1.5rem] overflow-hidden relative group cursor-pointer border border-white/10 min-h-0" onClick={() => openLightbox(activePlace.images, 2)}>
+                      <img src={cleanImgPath(activePlace.images?.[2])} alt="" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Mapa Interactivo Abajo */}
+                <div className="flex-1 rounded-[2rem] overflow-hidden border border-white/10 relative group min-h-0">
+                  <iframe
+                    title={`Ubicación de ${activePlace.name}`}
+                    src={activePlace.iframeSrc}
+                    className="absolute inset-0 w-full h-full border-0 grayscale-[0.2] contrast-125"
+                    loading="lazy"
+                  />
+                  {/* Overlay sutil para que el mapa no resalte demasiado hasta hacer hover */}
+                  <div className="absolute inset-0 pointer-events-none ring-1 ring-inset ring-white/5 rounded-[2rem]" />
+                </div>
+              </motion.div>
+            </AnimatePresence>
           </div>
         </div>
       </div>
+
+      {/* LIGHTBOX MODAL */}
       <AnimatePresence>
         {lightboxOpen && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-sm"
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-xl p-4 md:p-10"
             onClick={closeLightbox}
           >
             <motion.div
-              initial={{ scale: 0.93, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.93, opacity: 0 }}
-              transition={{ duration: 0.25 }}
-              className="relative mx-4 w-full max-w-3xl"
+              initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.9, opacity: 0 }} transition={{ duration: 0.3 }}
+              className="relative w-full max-w-5xl rounded-[2.5rem] overflow-hidden shadow-2xl bg-stone-900 border border-white/10"
               onClick={(e) => e.stopPropagation()}
             >
-              <button
-                onClick={closeLightbox}
-                className="absolute -right-3 -top-3 z-50 flex h-9 w-9 items-center justify-center rounded-full border border-brand-cream/30 bg-stone-900 text-stone-200 shadow-lg transition hover:bg-stone-800"
-                aria-label="Cerrar"
-              >
-                <X className="h-4 w-4" />
+              <button onClick={closeLightbox} className="absolute right-4 top-4 md:right-6 md:top-6 z-50 p-3 bg-black/60 text-brand-cream rounded-full hover:bg-brand-red transition-all">
+                <X size={24} />
               </button>
-              <div className="relative overflow-hidden rounded-2xl bg-black">
-                <img src={lightboxImages[lightboxIndex]} alt={`Imagen ${lightboxIndex + 1}`} className="w-full rounded-2xl object-contain shadow-2xl" style={{ maxHeight: '75vh' }} />
 
+              <div className="relative aspect-[4/3] md:aspect-[16/9] w-full flex items-center justify-center bg-black">
+                <img src={lightboxImages[lightboxIndex]} alt="" className="w-full h-full object-contain" />
+                
                 {lightboxImages.length > 1 && (
                   <>
-                    <button
-                      className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-black/40 p-2 text-white"
-                      onClick={showPrev}
-                      aria-label="Imagen anterior"
-                      disabled={lightboxIndex === 0}
-                    >
-                      <ChevronLeft className="h-6 w-6" />
+                    <button onClick={showPrev} disabled={lightboxIndex === 0} className="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-black/60 text-white hover:bg-brand-red transition disabled:opacity-30 disabled:hover:bg-black/60">
+                      <ChevronLeft size={28} />
                     </button>
-                    <button
-                      className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-black/40 p-2 text-white"
-                      onClick={showNext}
-                      aria-label="Imagen siguiente"
-                      disabled={lightboxIndex === lightboxImages.length - 1}
-                    >
-                      <ChevronRight className="h-6 w-6" />
+                    <button onClick={showNext} disabled={lightboxIndex === lightboxImages.length - 1} className="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-black/60 text-white hover:bg-brand-red transition disabled:opacity-30 disabled:hover:bg-black/60">
+                      <ChevronRight size={28} />
                     </button>
                   </>
                 )}
               </div>
-
-              <p className="mt-4 text-center font-display text-xl text-brand-cream">{activePlace?.name}</p>
+              
+              <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 to-transparent p-8 text-center pointer-events-none">
+                <p className="font-display text-2xl md:text-3xl text-brand-cream">{activePlace?.name}</p>
+                <p className="text-xs uppercase tracking-widest text-brand-red mt-2">{lightboxIndex + 1} / {lightboxImages.length}</p>
+              </div>
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
     </section>
-  )
+  );
 }
