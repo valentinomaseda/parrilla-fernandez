@@ -15,7 +15,7 @@ const links = [
 ];
 
 const reserveHref =
-  "https://wa.me/5492478460000?text=Hola%20Parrilla%20Fernandez,%20quiero%20reservar%20una%20mesa";
+  "https://wa.me/5492478403323?text=Hola%20Parrilla%20Fernandez,%20quiero%20reservar%20una%20mesa";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);

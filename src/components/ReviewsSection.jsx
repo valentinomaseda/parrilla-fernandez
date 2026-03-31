@@ -2,7 +2,6 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Star, MessageSquareQuote } from "lucide-react";
 
-// Mantenemos el componente FilledStar pero le damos la opción de aceptar clases para el color
 function FilledStar({ size = 16, className = "" }) {
   return (
     <svg
@@ -18,63 +17,86 @@ function FilledStar({ size = 16, className = "" }) {
   );
 }
 
+// Función profesional para calcular el tiempo real transcurrido
+function calcularTiempo(fechaResena) {
+  const fecha = new Date(fechaResena);
+  const hoy = new Date();
+  
+  // Diferencia en meses totales
+  const mesesDiferencia = (hoy.getFullYear() - fecha.getFullYear()) * 12 + (hoy.getMonth() - fecha.getMonth());
+
+  if (mesesDiferencia < 1) {
+    const diasDiferencia = Math.floor((hoy - fecha) / (1000 * 60 * 60 * 24));
+    return `Hace ${diasDiferencia} día${diasDiferencia !== 1 ? 's' : ''}`;
+  }
+  
+  if (mesesDiferencia < 12) {
+    return `Hace ${mesesDiferencia} mes${mesesDiferencia !== 1 ? 'es' : ''}`;
+  }
+
+  const años = Math.floor(mesesDiferencia / 12);
+  return `Hace ${años} año${años !== 1 ? 's' : ''}`;
+}
+
 const sampleReviews = [
   {
     id: 1,
     name: "Marisel Acuña",
-    date: "Hace 6 años",
+    // Fecha en formato YYYY-MM-DD
+    date: "2019-03-10", 
     rating: 5,
-    text: "Muy conforme con atención y cuidado por mi teme de celiaquia!! Se come super bien!!! Parrillada,  asado, vacío,  papas fritas y ensalada las veces que quieras!!! La verdad para mi 10 estrellas!!!.",
+    text: "Muy conforme con atención y cuidado por mi teme de celiaquia!! Se come super bien!!! Parrillada, asado, vacío, papas fritas y ensalada las veces que quieras!!! La verdad para mi 10 estrellas!!!.",
   },
   {
     id: 2,
-    name: "María Florencia Goncalves Preza",
-    date: "Hace 6 meses",
+    name: "María Florencia Goncalves",
+    date: "2025-09-20",
     rating: 5,
     text: "No hay mas estrellas, sino, las pondría. Parrilla para amigos, parejas y familias. Fuimos pasadas las 23.30 y aun tenían carne a punto. Las papas fritas, alucinantes. Si pisamos nuevamente Arrecifes, vamos a volver sin dudarlo.",
   },
   {
     id: 3,
     name: "Serena Tapia",
-    date: "Hace 7 meses",
+    date: "2025-08-15",
     rating: 5,
     text: "Muy buena experiencia; las porciones son muy generosas y el ambiente te hace sentir como en el patio de tu casa.",
   },
   {
     id: 4,
     name: "Giselle Lencina",
-    date: "Hace 2 meses",
+    date: "2026-01-05",
     rating: 5,
     text: "Tremendo sandwich de vacio, comimos 2 y sobró. No me quiero imaginar lo buena que debe estar la parrillada.",
   },
   {
     id: 5,
     name: "Laura Escalante",
-    date: "Hace 7 meses",
+    date: "2025-08-20",
     rating: 5,
     text: "Atención IMPECABLE! Tenia reserva y ya teníamos todo armado unos minutos antes. Es la segunda vez que voy y voy a volver siempre que pueda!!!",
   },
   {
     id: 6,
     name: "Pablo Tesei",
-    date: "Hace 5 meses",
+    date: "2025-10-10",
     rating: 5,
-    text: "Excelente! No hay más para decir, la parrilla libre es monumental, la primera vez que en una parrilla (y he ido a muchas a lo largo y ancho del país) me traen una bandeja de achuras tan completa y buena! La carne una delicia! Ya marque como favorito para para cada vez que esté en la región. 110% recomendable si buscan comer un buen asado!",
+    text: "Excelente! No hay más para decir, la parrilla libre es monumental, la primera vez que en una parrilla me traen una bandeja de achuras tan completa y buena! La carne una delicia! Ya marque como favorito.",
   },
 ];
 
 export default function ReviewsSection({ reviews = sampleReviews }) {
+  // Eliminamos el setInterval. React calculará el tiempo exacto cada vez que
+  // un cliente nuevo cargue la página, lo cual es más que suficiente.
+
   return (
     <section
       id="reviews"
       className="relative w-full bg-[#141211] py-24 px-6 md:px-10 overflow-hidden"
     >
-      {/* Ruido de fondo y gradiente sutil */}
       <div className="absolute inset-0 noise-dark opacity-30 pointer-events-none" />
       <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-wood-dark to-transparent pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto z-10">
-        {/* Cabecera Editorial */}
         <header className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="max-w-2xl">
             <div className="flex items-center gap-3 text-brand-red mb-4">
@@ -96,7 +118,6 @@ export default function ReviewsSection({ reviews = sampleReviews }) {
           </p>
         </header>
 
-        {/* CSS Columns (Masonry Layout nativo) */}
         <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
           {reviews.map((r, idx) => (
             <motion.article
@@ -107,7 +128,6 @@ export default function ReviewsSection({ reviews = sampleReviews }) {
               transition={{ duration: 0.6, delay: (idx % 3) * 0.1 }}
               className="break-inside-avoid relative rounded-[2rem] bg-stone-900/40 border border-white/5 p-8 shadow-2xl backdrop-blur-sm hover:border-brand-red/30 transition-colors duration-300 group"
             >
-              {/* Comillas decorativas de fondo */}
               <div className="absolute top-4 right-6 text-8xl font-display text-white/[0.02] pointer-events-none group-hover:text-brand-red/[0.05] transition-colors">
                 "
               </div>
@@ -140,7 +160,8 @@ export default function ReviewsSection({ reviews = sampleReviews }) {
                       {r.name}
                     </h3>
                     <div className="text-[10px] uppercase tracking-widest text-stone-500 mt-0.5">
-                      {r.date}
+                      {/* Aquí inyectamos el tiempo real y dinámico */}
+                      {calcularTiempo(r.date)}
                     </div>
                   </div>
                 </div>
@@ -149,7 +170,6 @@ export default function ReviewsSection({ reviews = sampleReviews }) {
           ))}
         </div>
 
-        {/* Call to Action - Google Reviews */}
         <div className="mt-20 text-center">
           <a
             href="https://www.google.com/search?q=Parrilla+Fernandez+Arrecifes"
@@ -158,7 +178,6 @@ export default function ReviewsSection({ reviews = sampleReviews }) {
             className="inline-flex items-center gap-3 bg-transparent border border-brand-red/50 text-brand-cream font-bold px-8 py-4 rounded-full shadow-lg hover:bg-brand-red/10 hover:border-brand-red transition-all duration-300 text-sm uppercase tracking-widest group"
           >
             <span>Leer más testimonios</span>
-            {/* Pequeña "G" simplificada para Google */}
             <svg
               viewBox="0 0 24 24"
               width="16"

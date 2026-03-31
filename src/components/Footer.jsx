@@ -16,7 +16,7 @@ export default function Footer() {
           </p>
 
           <a
-            href="https://wa.me/5492478460000?text=Hola%20Parrilla%20Fernández,%20quiero%20reservar%20una%20mesa"
+            href="https://wa.me/5492478403323?text=Hola%20Parrilla%20Fernández,%20quiero%20reservar%20una%20mesa"
             target="_blank"
             rel="noreferrer"
             className="btn mt-5 text-sm uppercase tracking-wide"
@@ -49,8 +49,8 @@ export default function Footer() {
             <p className="flex items-start gap-2">
               <MapPin className="mt-0.5 h-4 w-4 text-brand-red" /> Ruta 51 e Italia, Arrecifes
             </p>
-            <a href="tel:+542478460000" className=" flex items-center gap-2 transition hover:text-white">
-              <Phone className="h-4 w-4 text-brand-red" /> +54 2478 46-0000
+            <a href="tel:+5492478403323" className=" flex items-center gap-2 transition hover:text-white">
+              <Phone className="h-4 w-4 text-brand-red" /> +54 2478 40-3323
             </a>
             <a
               href="https://www.instagram.com/parrillafernandez1"
