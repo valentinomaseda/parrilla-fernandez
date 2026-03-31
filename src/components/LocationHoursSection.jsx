@@ -48,8 +48,7 @@ export default function LocationHoursSection() {
             <div>
               <p className="text-xs uppercase tracking-[0.3em] text-brand-cream/80">Horarios</p>
               <ul className="mt-2 space-y-2 text-sm text-stone-300">
-                <li>Martes a Sabado: 12:00 a 15:00 y 20:00 a 00:00</li>
-                <li>Domingo: 12:00 a 15:30</li>
+                <li>Martes a Domingo: 12:00 a 16:00 y 20:00 a 00:00</li>
                 <li>Lunes: Cerrado</li>
               </ul>
             </div>
