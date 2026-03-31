@@ -98,6 +98,7 @@ export default function HeroSection() {
             RESERVAR MESA
           </a>
 
+          {/*
           <a
             className="btn btn-ghost"
             href="#menu"
@@ -105,6 +106,7 @@ export default function HeroSection() {
           >
             VER MENÚ
           </a>
+          */}
         </motion.div>
 
         {/* Scroll indicator */}

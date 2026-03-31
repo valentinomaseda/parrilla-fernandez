@@ -70,6 +70,7 @@ export default function MenuSection() {
 
         {/* CTA consistente con el resto del sitio */}
         <div className="mt-10 flex justify-center">
+          {/*
           <a
             href="https://drive.google.com/YOUR_MENU_PDF_LINK"
             target="_blank"
@@ -78,6 +79,7 @@ export default function MenuSection() {
           >
             Ver menú completo
           </a>
+          */}
         </div>
       </div>
     </section>
