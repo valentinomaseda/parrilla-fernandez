@@ -23,24 +23,50 @@ function Counter({ target, suffix = "", duration = 1800 }) {
 
 export default function StatsSection() {
   return (
-    <section className="border-y border-brand-cream/10 bg-black/40 py-16">
-      <p className="mb-10 text-center text-[11px] uppercase tracking-[0.3em] text-stone-500">
-        Parrilla Fernández · Desde 1977
-      </p>
-      <div className="mx-auto grid max-w-4xl grid-cols-3 divide-x divide-stone-800">
-        {[
-          { value: 49, suffix: "", label: "Años de fuego", sub: "Fundada en 1977" },
-          { value: 12, suffix: "k+", label: "Comensales felices", sub: "Familias y viajeros" },
-          { value: 1, suffix: "", label: "Familia al frente", sub: "Misma cocina, misma pasión" },
-        ].map((stat) => (
-          <div key={stat.label} className="px-6 text-center">
-            <p className="font-display text-6xl text-brand-cream sm:text-7xl">
-              <Counter target={stat.value} suffix={stat.suffix} />
-            </p>
-            <p className="mt-2 text-xs uppercase tracking-[0.2em] text-stone-400">{stat.label}</p>
-            <p className="mt-1 text-[11px] text-stone-600">{stat.sub}</p>
-          </div>
-        ))}
+    <section className="border-y border-brand-cream/5 bg-[#141211] py-16 sm:py-24 relative overflow-hidden">
+      {/* Ruido de fondo para mantener la textura del sitio */}
+      <div className="absolute inset-0 noise-dark opacity-30 pointer-events-none" />
+
+      <div className="relative z-10">
+        <p className="mb-12 text-center text-[11px] font-black uppercase tracking-[0.4em] text-brand-red">
+          Parrilla Fernández · Desde 1977
+        </p>
+        
+        {/* Layout Responsivo: 1 columna en móvil, 3 en desktop */}
+        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-12 md:grid-cols-3 md:gap-0 md:divide-x md:divide-white/10">
+          {[
+            { 
+              value: 49, 
+              suffix: "", 
+              label: "Años de fuego", 
+              sub: "Tradición ininterrumpida" 
+            },
+            { 
+              value: 100, 
+              suffix: "%", 
+              label: "Fuego a leña", 
+              sub: "Puro quebracho y espinillo" 
+            },
+            { 
+              value: 1, 
+              suffix: "", 
+              label: "Familia al frente", 
+              sub: "Misma receta, misma pasión" 
+            },
+          ].map((stat) => (
+            <div key={stat.label} className="px-6 text-center group">
+              <p className="font-display text-6xl text-brand-cream sm:text-7xl group-hover:scale-105 transition-transform duration-500">
+                <Counter target={stat.value} suffix={stat.suffix} />
+              </p>
+              <p className="mt-4 text-[11px] font-bold uppercase tracking-[0.25em] text-stone-400">
+                {stat.label}
+              </p>
+              <p className="mt-1.5 text-sm text-stone-500 italic font-light">
+                {stat.sub}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

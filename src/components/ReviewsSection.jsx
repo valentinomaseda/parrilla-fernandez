@@ -1,7 +1,8 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Star } from 'lucide-react'
+import { Star, MessageSquareQuote } from 'lucide-react'
 
+// Mantenemos el componente FilledStar pero le damos la opción de aceptar clases para el color
 function FilledStar({ size = 16, className = '' }) {
   return (
     <svg
@@ -21,100 +22,131 @@ const sampleReviews = [
   {
     id: 1,
     name: 'María López',
-    date: 'Mar 2024',
+    date: 'Hace 2 meses',
     rating: 5,
-    text: 'Excelente parrilla: sabor auténtico y atención cálida. Volveremos seguro.'
+    text: 'Excelente parrilla: sabor auténtico y atención cálida. El asado a la estaca te hace viajar en el tiempo. Volveremos seguro.'
   },
   {
     id: 2,
     name: 'Juan Pérez',
-    date: 'Ene 2024',
+    date: 'Hace 4 meses',
     rating: 5,
-    text: 'La mejor cocción a la estaca de la zona. Recomendado para reuniones familiares.'
+    text: 'La mejor cocción a la estaca de la zona. Parada obligatoria en la Ruta 51. Recomendado para reuniones familiares.'
   },
   {
     id: 3,
     name: 'Lucía Gómez',
-    date: 'Nov 2023',
+    date: 'Hace 6 meses',
     rating: 4,
-    text: 'Muy buena experiencia; las porciones son generosas y el ambiente agradable.'
+    text: 'Muy buena experiencia; las porciones son muy generosas y el ambiente te hace sentir como en el patio de tu casa.'
   },
   {
     id: 4,
     name: 'Carlos Díaz',
-    date: 'Oct 2023',
+    date: 'Hace 8 meses',
     rating: 5,
-    text: 'Servicio ágil y cortes excelentes. Arrecifes, cuna de campeones, también se come bien aquí.'
+    text: 'Servicio ágil y cortes excelentes. Arrecifes, cuna de campeones, también se come de primera aquí. Las papas fritas son una locura.'
   },
   {
     id: 5,
     name: 'Ana Ruiz',
-    date: 'Ago 2023',
+    date: 'Hace 1 año',
     rating: 5,
-    text: 'Atención de primera y sabores con tradición. Imperdible.'
+    text: 'Atención de primera y sabores con tradición. Se nota que hay oficio detrás de esos fierros.'
   },
   {
     id: 6,
     name: 'Pedro Martín',
-    date: 'May 2023',
+    date: 'Hace 1 año',
     rating: 4,
-    text: 'Buena relación calidad-precio; volveré a probar el asado a la estaca.'
+    text: 'Buena relación calidad-precio. Un clásico que no falla nunca los domingos al mediodía.'
   }
 ]
 
 export default function ReviewsSection({ reviews = sampleReviews }) {
-  const isDark = true // this section uses wood-dark background per spec
-
   return (
-    <section id='reviews' className="w-full bg-wood-dark text-brand-cream font-sans py-12 px-4 md:px-8">
-      <div className="max-w-7xl mx-auto">
-        <header className="text-center mb-8">
-          <h2 className="text-3xl md:text-4xl font-display font-semibold">Lo que dicen nuestros comensales</h2>
-          <p className="mt-2 text-sm text-brand-cream/90">Opiniones reales de quienes ya vivieron la experiencia</p>
+    <section id='reviews' className="relative w-full bg-[#141211] py-24 px-6 md:px-10 overflow-hidden">
+      {/* Ruido de fondo y gradiente sutil */}
+      <div className="absolute inset-0 noise-dark opacity-30 pointer-events-none" />
+      <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-wood-dark to-transparent pointer-events-none" />
+
+      <div className="relative max-w-7xl mx-auto z-10">
+        
+        {/* Cabecera Editorial */}
+        <header className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div className="max-w-2xl">
+            <div className="flex items-center gap-3 text-brand-red mb-4">
+              <MessageSquareQuote size={20} className="opacity-80" />
+              <span className="text-[10px] font-black uppercase tracking-[0.3em]">La voz de la mesa</span>
+            </div>
+            <h2 className="text-5xl md:text-6xl font-display text-brand-cream leading-tight">
+              Testigos de<br/><span className="text-stone-100 italic">nuestra tradición</span>
+            </h2>
+          </div>
+          
+          <p className="text-stone-400 text-lg md:text-right max-w-sm font-light">
+            Más de 40 años forjando amistades a través del fuego. Esto es lo que dicen quienes nos eligen.
+          </p>
         </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* CSS Columns (Masonry Layout nativo) */}
+        <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
           {reviews.map((r, idx) => (
             <motion.article
               key={r.id}
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ y: -6, scale: 1.02 }}
-              whileTap={{ scale: 0.995 }}
-              viewport={{ once: true, amount: 0.15 }}
-              transition={{ duration: 0.45, delay: idx * 0.06 }}
-              tabIndex={0}
-              className="rounded-3xl bg-wood-dark/70 border border-brand-cream/10 p-6 shadow-md hover:shadow-2xl transition-shadow duration-200 will-change-transform focus:outline-none focus:ring-4 focus:ring-brand-cream/20"
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.6, delay: (idx % 3) * 0.1 }}
+              className="break-inside-avoid relative rounded-[2rem] bg-stone-900/40 border border-white/5 p-8 shadow-2xl backdrop-blur-sm hover:border-brand-red/30 transition-colors duration-300 group"
             >
-              <div className="flex items-center justify-between mb-3">
-                <div>
-                  <h3 className="font-display text-lg md:text-xl font-semibold">{r.name}</h3>
-                  <div className="text-xs text-brand-cream/80">{r.date}</div>
-                </div>
-                <div className="flex items-center gap-1">
+              {/* Comillas decorativas de fondo */}
+              <div className="absolute top-4 right-6 text-8xl font-display text-white/[0.02] pointer-events-none group-hover:text-brand-red/[0.05] transition-colors">
+                "
+              </div>
+
+              <div className="relative z-10">
+                <div className="flex items-center gap-1 mb-6">
                   {Array.from({ length: 5 }).map((_, i) =>
                     i < r.rating ? (
-                      <FilledStar key={i} size={16} className="text-brand-cream" />
+                      <FilledStar key={i} size={14} className="text-brand-red" />
                     ) : (
-                      <Star key={i} size={16} className="text-brand-cream/30" />
+                      <Star key={i} size={14} className="text-stone-700" />
                     )
                   )}
                 </div>
-              </div>
 
-              <p className="text-sm text-brand-cream/90">{r.text}</p>
+                <p className="text-lg text-stone-200 leading-relaxed font-light italic mb-8">
+                  "{r.text}"
+                </p>
+
+                <div className="flex items-center gap-4 mt-auto">
+                  <div className="h-10 w-10 rounded-full bg-wood-dark flex items-center justify-center border border-white/10 text-brand-cream font-display text-xl">
+                    {r.name.charAt(0)}
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-bold text-brand-cream tracking-wide">{r.name}</h3>
+                    <div className="text-[10px] uppercase tracking-widest text-stone-500 mt-0.5">{r.date}</div>
+                  </div>
+                </div>
+              </div>
             </motion.article>
           ))}
         </div>
 
-        <div className="mt-8 text-center">
+        {/* Call to Action - Google Reviews */}
+        <div className="mt-20 text-center">
           <a
             href="https://www.google.com/search?q=Parrilla+Fernandez+Arrecifes" 
             target="_blank"
             rel="noreferrer"
-            className="inline-block bg-brand-cream text-wood-dark font-semibold px-6 py-3 rounded-full shadow-md"
+            className="inline-flex items-center gap-3 bg-transparent border border-brand-red/50 text-brand-cream font-bold px-8 py-4 rounded-full shadow-lg hover:bg-brand-red/10 hover:border-brand-red transition-all duration-300 text-sm uppercase tracking-widest group"
           >
-            Ver más en Google Reviews
+            <span>Leer más testimonios</span>
+            {/* Pequeña "G" simplificada para Google */}
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" className="opacity-80 group-hover:opacity-100">
+              <path d="M12.24 10.285V14.4h6.806c-.275 1.765-2.056 5.174-6.806 5.174-4.095 0-7.439-3.389-7.439-7.574s3.345-7.574 7.439-7.574c2.33 0 3.891.989 4.785 1.849l3.254-3.138C18.189 1.186 15.479 0 12.24 0c-6.635 0-12 5.365-12 12s5.365 12 12 12c6.926 0 11.52-4.869 11.52-11.726 0-.788-.085-1.39-.189-1.989H12.24z" />
+            </svg>
           </a>
         </div>
       </div>

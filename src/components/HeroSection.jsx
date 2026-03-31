@@ -91,7 +91,7 @@ export default function HeroSection() {
         >
           <a
             className="btn"
-            href="https://wa.me/5492478460000?text=Hola%20Parrilla%20Fernandez,%20quiero%20reservar%20una%20mesa"
+            href="https://wa.me/5492478403323?text=Hola%20Parrilla%20Fernandez,%20quiero%20reservar%20una%20mesa"
             target="_blank"
             rel="noreferrer"
           >
