@@ -18,54 +18,67 @@ const reserveHref =
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("inicio"); // Estado para el Scroll Spy
-
+  const [activeSectionId, setActiveSectionId] = useState("inicio");
+  const [activeLabel, setActiveLabel] = useState("Inicio");
+  const [isScrolling, setIsScrolling] = useState(false);
+  
+  const scrollTimeoutRef = useRef(null);
   const handleLinkClick = () => setOpen(false);
 
-  // Lógica para detectar en qué sección estamos
   useEffect(() => {
     const rafRef = { current: null };
 
     const handleScroll = () => {
+      setIsScrolling(true);
+      if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+      scrollTimeoutRef.current = setTimeout(() => setIsScrolling(false), 2000);
+
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
       rafRef.current = requestAnimationFrame(() => {
-        // El punto de lectura: un tercio del viewport desde arriba
         const readPoint = window.innerHeight / 3;
-        let current = "";
+        let currentId = "";
+        let currentLabel = "";
 
         for (const link of links) {
           const id = link.href.substring(1);
           const el = document.getElementById(id);
           if (!el) continue;
+          
           const rect = el.getBoundingClientRect();
           if (readPoint >= rect.top && readPoint < rect.bottom) {
-            current = id;
+            currentId = id;
+            currentLabel = link.label;
             break;
           }
         }
 
-        if (current) setActiveSection(current);
+        if (currentId) {
+          setActiveSectionId(currentId);
+          setActiveLabel(currentLabel);
+        }
       });
     };
 
-    handleScroll(); // inicializar
+    handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", handleScroll);
+    
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleScroll);
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
     };
   }, []);
 
   return (
     <nav className="fixed inset-x-0 top-0 z-50 bg-gradient-to-b from-black/70 to-transparent">
       <div style={{ position: "relative" }} className="mx-auto max-w-6xl px-4 pt-3 sm:px-8">
-        <div className="flex items-center justify-between rounded-2xl border border-brand-cream/20 bg-black/55 px-3 py-2 backdrop-blur-md">
+        <div className="relative flex items-center justify-between rounded-2xl border border-brand-cream/20 bg-black/55 px-3 py-2 backdrop-blur-md">
           
           <a
             href="#inicio"
-            className="shrink-0 group"
+            className="shrink-0 group relative z-10"
             aria-label="Ir al inicio"
           >
             <img
@@ -75,10 +88,44 @@ export default function Navbar() {
             />
           </a>
 
+          {/* === INDICADOR MOBILE CENTRAL CON TRANSICIÓN DE TEXTO === */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none md:hidden z-0 overflow-hidden">
+            <AnimatePresence>
+              {isScrolling && (
+                <motion.div
+                  layout // Esto permite que el contenedor cambie de ancho como un elástico
+                  initial={{ opacity: 0, y: -15, filter: "blur(4px)" }}
+                  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                  exit={{ opacity: 0, y: -10, filter: "blur(4px)" }}
+                  transition={{ duration: 0.4, ease: "easeOut" }}
+                  className="bg-stone-900/90 border border-white/10 px-4 py-1.5 rounded-full flex items-center gap-2 shadow-[0_4px_20px_rgba(0,0,0,0.4)]"
+                >
+                  <motion.div layout className="w-1.5 h-1.5 rounded-full bg-brand-red animate-pulse shrink-0" />
+                  
+                  {/* El texto animado */}
+                  <div className="flex items-center overflow-hidden">
+                    <AnimatePresence mode="wait">
+                      <motion.span
+                        key={activeLabel} // Magia: React vuelve a animar cuando esta variable cambia
+                        initial={{ opacity: 0, y: 10, filter: "blur(2px)" }}
+                        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                        exit={{ opacity: 0, y: -10, filter: "blur(2px)" }}
+                        transition={{ duration: 0.15, ease: "easeInOut" }}
+                        className="text-[10px] font-bold uppercase tracking-[0.2em] text-brand-cream whitespace-nowrap block"
+                      >
+                        {activeLabel}
+                      </motion.span>
+                    </AnimatePresence>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
           {/* Enlaces Desktop */}
-          <div className="hidden items-center gap-1 md:flex">
+          <div className="hidden items-center gap-1 md:flex relative z-10">
             {links.map((link) => {
-              const isActive = activeSection === link.href.substring(1);
+              const isActive = activeSectionId === link.href.substring(1);
               return (
                 <a
                   key={link.href}
@@ -88,7 +135,6 @@ export default function Navbar() {
                   }`}
                 >
                   {link.label}
-                  {/* Subrayado animado (LayoutId hace que se deslice entre links) */}
                   {isActive && (
                     <motion.div
                       layoutId="navbar-indicator"
@@ -114,7 +160,7 @@ export default function Navbar() {
           <motion.button
             type="button"
             onClick={() => setOpen((value) => !value)}
-            className="btn inline-flex h-10 w-10 items-center justify-center rounded-full border border-brand-cream/40 text-stone-100 md:hidden"
+            className="relative z-10 btn inline-flex h-10 w-10 items-center justify-center rounded-full border border-brand-cream/40 text-stone-100 md:hidden"
             aria-label={open ? "Cerrar menú" : "Abrir menú"}
             aria-expanded={open}
             aria-controls="mobile-nav"
@@ -145,7 +191,7 @@ export default function Navbar() {
             >
               <div className="flex flex-col gap-2">
                 {links.map((link) => {
-                  const isActive = activeSection === link.href.substring(1);
+                  const isActive = activeSectionId === link.href.substring(1);
                   return (
                     <a
                       key={link.href}
@@ -153,7 +199,7 @@ export default function Navbar() {
                       onClick={handleLinkClick}
                       className={`rounded-xl px-3 py-2 text-sm font-medium transition ${
                         isActive
-                          ? "bg-brand-red/15 text-brand-red" // Resaltado en Mobile si está activo
+                          ? "bg-brand-red/15 text-brand-red"
                           : "text-stone-200 hover:bg-stone-900 hover:text-white"
                       }`}
                     >
