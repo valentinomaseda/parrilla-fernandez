@@ -18,7 +18,7 @@ const defaultPlaces = [
     description:
       "Plaza histórica en el centro de la ciudad, punto de encuentro y actividades culturales.",
     iframeSrc:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3305.0808018686535!2d-60.11133978951739!3d-34.06744287303925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b99ddcebfc1b49%3A0x1468be4a515ae23b!2sPlaza%20Bartolom%C3%A9%20Mitre!5e0!3m2!1ses-419!2sar!4v1775074604347!5m2!1ses-419!2sar",
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3305.0808018686535!2d-60.11133978951736!3d-34.06744287303924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b99ddcebfc1b49%3A0x1468be4a515ae23b!2sPlaza%20Bartolom%C3%A9%20Mitre!5e0!3m2!1ses-419!2sar!4v1775602311289!5m2!1ses-419!2sar",
     images: ["/mitre.jpg", "/Arco-pLAZA.jpg", "/Arrecifes-Iglesia-768x431.jpg"],
   },
   {
@@ -28,7 +28,7 @@ const defaultPlaces = [
     description:
       "Restos del antiguo molino; un punto de interés arqueológico y fotográfico único a orillas del río.",
     iframeSrc:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2336.863772434074!2d-60.111387296303555!3d-34.07401440851512!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b99de6e77501f3%3A0x4754ba6078f6e767!2sViejo%20Molino%20Harinero!5e0!3m2!1ses-419!2sar!4v1775074644488!5m2!1ses-419!2sar",
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6609.72026413217!2d-60.11456870356957!3d-34.07309955979357!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b99de6e77501f3%3A0x4754ba6078f6e767!2sViejo%20Molino%20Harinero!5e0!3m2!1ses-419!2sar!4v1775602707775!5m2!1ses-419!2sar",
     images: [
       "public/arrecifes-molino-768x517.jpg",
       "public/arrecifes-molino-2-edited-1-768x1024.jpg",
@@ -42,7 +42,7 @@ const defaultPlaces = [
     description:
       'El Circuito "Daniel Alberti" es un espacio recreativo y automovilístico destacado, situado a orillas del río Arrecifes. Es punto de encuentro clave para competencias zonales.',
     iframeSrc:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1700.811615486549!2d-60.10396514446131!3d-34.075008827941474!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b99deed033714f%3A0x2558615062181b4f!2sCircuito%20Costanero%20de%20Arrecifes%20%22Daniel%20Alberti%22!5e0!3m2!1ses-419!2sar!4v1775074661578!5m2!1ses-419!2sar",
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2778.972072701342!2d-60.10400121531138!3d-34.075323631286366!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b99deed033714f%3A0x2558615062181b4f!2sCircuito%20Costanero%20de%20Arrecifes%20%22Daniel%20Alberti%22!5e0!3m2!1ses-419!2sar!4v1775602751711!5m2!1ses-419!2sar",
     images: ["/circuito.jpg", "/circuito2.jpg", "/circuito3.jpg"],
   },
   {
@@ -52,7 +52,7 @@ const defaultPlaces = [
     description:
       "Ubicado en el antiguo mercado municipal, es el epicentro del patrimonio histórico y artístico local. Alberga gran parte de la historia automovilística de la ciudad.",
     iframeSrc:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3305.188810014646!2d-60.11063188951747!3d-34.06467387304029!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b99ddb46ccd783%3A0xa8bfe36efe0de6c6!2sCentro%20Cultural%20Arrecifes!5e0!3m2!1ses-419!2sar!4v1775074680524!5m2!1ses-419!2sar",
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3305.188810014646!2d-60.11063188951747!3d-34.06467387304029!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b99ddb46ccd783%3A0xa8bfe36efe0de6c6!2sCentro%20Cultural%20Arrecifes!5e0!3m2!1ses-419!2sar!4v1775602911087!5m2!1ses-419!2sar",
     images: ["public/Centro-Cultural.jpg", "/museo.jpg", "/museo2.jpg"],
   },
   {
@@ -62,7 +62,7 @@ const defaultPlaces = [
     description:
       "Las Ruinas del Tajamar son los vestigios de una antigua esclusa del proyectado Canal del Norte, construida a principios del siglo XX para navegación.",
     iframeSrc:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3304.8558829971485!2d-60.11603888951711!3d-34.07320847303707!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b99d78edd8404b%3A0xcc1fc7af6faf1b82!2sEl%20TAJAMAR!5e0!3m2!1ses-419!2sar!4v1775074700260!5m2!1ses-419!2sar",
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3304.855882997149!2d-60.11603888951706!3d-34.073208473037056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b99d78edd8404b%3A0xcc1fc7af6faf1b82!2sEl%20TAJAMAR!5e0!3m2!1ses-419!2sar!4v1775602978056!5m2!1ses-419!2sar",
     images: [
       "public/Arrecifes-Tajamar-768x432.jpg",
       "public/Tajamar.jpg",
@@ -76,7 +76,7 @@ const defaultPlaces = [
     description:
       "Un lugar ideal para tomar un mate en familia, con sombra natural y mesas para disfrutar del ambiente. Lugar tradicional para paseos al aire libre.",
     iframeSrc:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2778.9736651389126!2d-60.1093418876796!3d-34.07527509318462!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b99de61c019159%3A0xede8923320cb5b8b!2sBalneario%20Municipal%20de%20Arrecifes!5e0!3m2!1ses-419!2sar!4v1775074714801!5m2!1ses-419!2sar",
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3304.786902829132!2d-60.11088902573761!3d-34.074976547881995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b99de61c019159%3A0xede8923320cb5b8b!2sBalneario%20Municipal%20de%20Arrecifes!5e0!3m2!1ses-419!2sar!4v1775603018074!5m2!1ses-419!2sar",
     images: [
       "/balneario2.jpg",
       "public/balneario-noche-768x960.jpg",

@@ -20,7 +20,7 @@ export default function LocationHoursSection() {
         >
           <iframe
             title="Ubicación Parrilla Fernández"
-            src="https://www.google.com/maps?q=Parrilla+Fernandez,+Italia+%26+RP51,+Arrecifes,+Buenos+Aires,+Argentina&output=embed"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3305.0526147197706!2d-60.096924725071716!3d-34.06816547315098!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b99d9546653315%3A0x92319b795174661a!2sParrilla%20Fern%C3%A1ndez!5e0!3m2!1ses-419!2sar!4v1775599057072!5m2!1ses-419!2sar"
             className="h-80 w-full border-0 sm:h-[26rem]"
             loading="lazy"
             allowFullScreen=""
