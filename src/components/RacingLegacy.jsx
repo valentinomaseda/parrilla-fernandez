@@ -12,15 +12,15 @@ const pilotProfiles = [
     stats: ["Tetracampeón de TC", "Campeón de STC2000", "Piloto IndyCar"],
   },
   {
-    id: "froilan",
-    name: "José Froilán González",
-    title: "The Pampas Bull",
-    image: "/froilan.jpg",
-    bio: "El hombre que cambió la historia de Ferrari al darle su primera victoria en la F1. Un arrecifeño que conquistó Europa y se codeó con Fangio en la cima del mundo.",
+    id: "lo-valvo",
+    name: "Ángel Lo Valvo",
+    title: "Hipómenes",
+    image: "/lo-valvo.jpg",
+    bio: "El hombre con el que empezó todo. Compitiendo bajo el seudónimo 'Hipómenes' para ocultárselo a su familia, ganó la primera carrera de la historia y se coronó como el primer Campeón de Turismo Carretera en 1939, encendiendo la chispa de nuestra leyenda.",
     stats: [
-      "1° Victoria Ferrari F1",
-      "Subcampeón Mundial F1",
-      "Ganador de Le Mans",
+      "1° Campeón de TC (1939)",
+      "Ganador 1° Carrera TC",
+      "El Pionero Absoluto",
     ],
   },
   {
@@ -59,19 +59,19 @@ const pilotProfiles = [
       "Presente de la Dinastía",
     ],
   },
+
   {
-    id: "lo-valvo",
-    name: "Ángel Lo Valvo",
-    title: "Hipómenes",
-    image: "/lo-valvo.jpg",
-    bio: "El hombre con el que empezó todo. Compitiendo bajo el seudónimo 'Hipómenes' para ocultárselo a su familia, ganó la primera carrera de la historia y se coronó como el primer Campeón de Turismo Carretera en 1939, encendiendo la chispa de nuestra leyenda.",
+    id: "froilan",
+    name: "José Froilán González",
+    title: "The Pampas Bull",
+    image: "/froilan.jpg",
+    bio: "El hombre que cambió la historia de Ferrari al darle su primera victoria en la F1. Un arrecifeño que conquistó Europa y se codeó con Fangio en la cima del mundo.",
     stats: [
-      "1° Campeón de TC (1939)",
-      "Ganador 1° Carrera TC",
-      "El Pionero Absoluto",
+      "1° Victoria Ferrari F1",
+      "Subcampeón Mundial F1",
+      "Ganador de Le Mans",
     ],
   },
-
   {
     id: "fontana",
     name: "Norberto Fontana",
@@ -105,12 +105,48 @@ const pilotProfiles = [
     ],
   },
   {
+    id: "aguirre",
+    name: "Valentín Aguirre",
+    title: "Valen",
+    image: "/aguirre.jpg",
+    bio: "Representante indiscutido de la garra arrecifeña moderna. Dueño de un estilo agresivo y veloz que lo coronó campeón en TC Pista y lo llevó a ganar y ser firme candidato en lo más alto del Turismo Carretera.",
+    stats: [
+      "Campeón TC Pista 2017",
+      "Múltiple Ganador en TC",
+      "Protagonista Actual",
+    ],
+  },
+  {
+    id: "catalan-magni",
+    name: "Juan Tomás Catalán Magni",
+    title: "Juanto",
+    image: "/catalan.jpg",
+    bio: "Hizo historia pura al convertirse en el ganador más joven de todos los tiempos en el Turismo Carretera, venciendo en los legendarios 1000 km de Buenos Aires con 18 años. Sangre nueva para un legado eterno.",
+    stats: [
+      "Ganador más joven de TC",
+      "Campeón TC Mouras",
+      "Vencedor 1000km Bs. As.",
+    ],
+  },
+  {
     id: "trosset",
     name: "Nicolás Trosset",
     title: "Niki",
     image: "/trosset.jpg",
-    bio: "Heredero de una dinastía de campeones y orgullo actual de Arrecifes. Niki mantiene viva la tradición de la ciudad en los puestos de vanguardia del Turismo Carretera.",
+    bio: "Heredero de una dinastía de campeones y orgullo actual de Arrecifes. Niki mantiene viva la tradición de la ciudad peleando siempre en los puestos de vanguardia del Turismo Carretera.",
     stats: ["Ganador en TC", "Campeón TC Pista", "Presente de la Cuna"],
+  },
+  {
+    id: "matias-trosset",
+    name: "Matías Trosset",
+    title: "Mati",
+    image: "/matias-trosset.jpg",
+    bio: "Demostrando que la destreza arrecifeña no se limita a los circuitos de asfalto, Matías lleva la bandera de la Cuna de Campeones a lo más alto en los caminos de tierra, consagrándose en el exigente Rally Federal.",
+    stats: [
+      "Campeón Rally Federal",
+      "Talento Todo Terreno",
+      "Dominador en la Tierra",
+    ],
   },
 ];
 
