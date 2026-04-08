@@ -45,6 +45,16 @@ const galleryItems = [
     media: "/Parri Historia 1  (1).mp4",
     span: "sm:col-span-1",
   },
+  {
+    title: "Bodega de vinos",
+    media: "/vinos.jpeg",
+    span: "sm:col-span-1",
+  },
+  {
+    title: "Variedad de vinos",
+    media: "/vinos2.jpeg",
+    span: "sm:col-span-1",
+  },
 ];
 
 export default function GallerySection() {
