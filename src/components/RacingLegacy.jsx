@@ -189,6 +189,69 @@ const wallItems = [
     isVertical: false,
   },
   {
+    id: 20,
+    title: "",
+    media: "/chevrolet-parri2.mp4",
+    type: "video",
+    isVertical: false,
+  },
+  {
+    id: 21,
+    title: "",
+    media: "/chevrolet-parri3.mp4",
+    type: "video",
+    isVertical: false,
+  },
+  {
+    id: 19,
+    title: "",
+    media: "/video-chev.mp4",
+    type: "video",
+    isVertical: false,
+  },
+  {
+    id: 14,
+    title: "",
+    media: "/canapa-firma.jpeg",
+    type: "img",
+    isVertical: false,
+  },
+  {
+    id: 15,
+    title: "",
+    media: "/chevrolet-parri.jpeg",
+    type: "img",
+    isVertical: false,
+  },
+  {
+    id: 16,
+    title: "",
+    media: "/chevrolet.jpeg",
+    type: "img",
+    isVertical: false,
+  },
+  {
+    id: 17,
+    title: "",
+    media: "/foto-cuadro.jpeg",
+    type: "img",
+    isVertical: false,
+  },
+  {
+    id: 18,
+    title: "",
+    media: "/foto-cuadro2.jpeg",
+    type: "img",
+    isVertical: false,
+  },
+  {
+    id: 19,
+    title: "",
+    media: "/canapa-parri.jpeg",
+    type: "img",
+    isVertical: false,
+  },
+  {
     id: 4,
     title: "",
     media: "/canapino-parri.jpg",
@@ -236,6 +299,12 @@ const wallItems = [
 export default function RacingLegacy() {
   const [activePilot, setActivePilot] = useState(pilotProfiles[0]);
   const [selectedMedia, setSelectedMedia] = useState(null);
+  const [showAllWallItems, setShowAllWallItems] = useState(false);
+
+  const hiddenWallItemsCount = Math.min(6, wallItems.length);
+  const visibleWallItems = showAllWallItems
+    ? wallItems
+    : wallItems.slice(0, wallItems.length - hiddenWallItemsCount);
 
   return (
     <section
@@ -375,13 +444,13 @@ export default function RacingLegacy() {
             Archivo Visual de Boxes
           </h4>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-[300px]">
-            {wallItems.map((item, i) => (
+            {visibleWallItems.map((item, i) => (
               <motion.div
-                key={item.id}
+                key={`${item.id}-${i}`}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
+                transition={{ delay: showAllWallItems ? 0 : i * 0.1 }}
                 onClick={() => setSelectedMedia(item)}
                 className={`group relative cursor-pointer overflow-hidden rounded-[2.5rem] border border-white/5 bg-stone-900 shadow-2xl transition-all duration-500 hover:border-brand-red/40 ${
                   item.isVertical ? "lg:row-span-2 lg:col-span-1" : ""
@@ -422,6 +491,18 @@ export default function RacingLegacy() {
               </motion.div>
             ))}
           </div>
+          {hiddenWallItemsCount > 0 && (
+            <div className="mt-10 flex justify-center lg:justify-start">
+              <button
+                onClick={() => setShowAllWallItems((prev) => !prev)}
+                className="rounded-2xl border border-white/15 bg-white/5 px-6 py-3 text-xs font-black uppercase tracking-[0.2em] text-stone-200 transition-all duration-300 hover:border-brand-red/50 hover:bg-brand-red/10 hover:text-brand-cream"
+              >
+                {showAllWallItems
+                  ? "Ver menos"
+                  : "Ver más"}
+              </button>
+            </div>
+          )}
         </div>
       </div>
 
