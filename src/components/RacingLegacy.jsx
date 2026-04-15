@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Trophy, Flag, Play, MoveRight } from "lucide-react";
 
@@ -300,11 +300,39 @@ export default function RacingLegacy() {
   const [activePilot, setActivePilot] = useState(pilotProfiles[0]);
   const [selectedMedia, setSelectedMedia] = useState(null);
   const [showAllWallItems, setShowAllWallItems] = useState(false);
+  const wallItemRefs = useRef([]);
 
   const hiddenWallItemsCount = Math.min(6, wallItems.length);
+  const collapsedVisibleCount = Math.max(
+    wallItems.length - hiddenWallItemsCount,
+    0,
+  );
+  const lastCollapsedItemIndex = collapsedVisibleCount - 1;
   const visibleWallItems = showAllWallItems
     ? wallItems
     : wallItems.slice(0, wallItems.length - hiddenWallItemsCount);
+
+  const handleToggleWallItems = () => {
+    if (!showAllWallItems) {
+      setShowAllWallItems(true);
+      return;
+    }
+
+    setShowAllWallItems(false);
+
+    if (lastCollapsedItemIndex < 0) {
+      return;
+    }
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        wallItemRefs.current[lastCollapsedItemIndex]?.scrollIntoView({
+          behavior: "smooth",
+          block: "end",
+        });
+      });
+    });
+  };
 
   return (
     <section
@@ -447,6 +475,9 @@ export default function RacingLegacy() {
             {visibleWallItems.map((item, i) => (
               <motion.div
                 key={`${item.id}-${i}`}
+                ref={(element) => {
+                  wallItemRefs.current[i] = element;
+                }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -494,7 +525,7 @@ export default function RacingLegacy() {
           {hiddenWallItemsCount > 0 && (
             <div className="mt-10 flex justify-center lg:justify-start">
               <button
-                onClick={() => setShowAllWallItems((prev) => !prev)}
+                onClick={handleToggleWallItems}
                 className="rounded-2xl border border-white/15 bg-white/5 px-6 py-3 text-xs font-black uppercase tracking-[0.2em] text-stone-200 transition-all duration-300 hover:border-brand-red/50 hover:bg-brand-red/10 hover:text-brand-cream"
               >
                 {showAllWallItems
