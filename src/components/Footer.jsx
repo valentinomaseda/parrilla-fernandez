@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="mx-auto grid max-w-6xl gap-10 px-6 py-12 sm:px-10 lg:grid-cols-4">
         <div className="lg:col-span-2">
           <a href="#inicio" className="inline-flex items-center gap-3">
-            <img src="/logo.png" alt="Parrilla Fernández" className="h-12 w-auto" />
+            <img src="/logo.webp" alt="Parrilla Fernández" className="h-12 w-auto" />
             <span className="font-display text-3xl text-stone-100">Parrilla Fernández</span>
           </a>
 

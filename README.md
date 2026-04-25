@@ -49,7 +49,7 @@ Estructura relevante
 	- `ValueInfoSection.jsx` — características del local (chimenea, parrilla, bodega).
 
 Assets
-- Coloca imágenes en la carpeta `public/` y referencia desde los arrays de imágenes con rutas relativas (ej: `/mi-foto.jpg`). El código normaliza automáticamente rutas que inician con `public/`.
+- Coloca imágenes en la carpeta `public/` y referencia desde los arrays de imágenes con rutas relativas (ej: `/mi-foto.webp`). El código normaliza automáticamente rutas que inician con `public/`.
 
 Notas para desarrollo
 - Las iframes de mapas usan `title` descriptivos para accesibilidad y SEO (p. ej. "Ubicación de Plaza Mitre en Arrecifes").

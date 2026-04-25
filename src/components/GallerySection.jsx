@@ -13,7 +13,7 @@ const galleryItems = [
     title: "Cocción a la estaca",
     media: "/Parri Historia 3.mp4",
     span: "sm:col-span-1",
-    poster: "/estaca.jpg",
+    poster: "/estaca.webp",
   },
   {
     title: "Chimenea encendida",
@@ -47,12 +47,12 @@ const galleryItems = [
   },
   {
     title: "Bodega de vinos",
-    media: "/vinos.jpeg",
+    media: "/vinos.webp",
     span: "sm:col-span-1",
   },
   {
     title: "Variedad de vinos",
-    media: "/vinos2.jpeg",
+    media: "/vinos2.webp",
     span: "sm:col-span-1",
   },
 ];

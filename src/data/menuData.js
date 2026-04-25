@@ -7,13 +7,13 @@ export const menuSections = [
         name: "Empanadas criollas",
         detail: "Carne cortada a cuchillo, x2 unidades",
         image:
-          "/empanadas.jpg",
+          "/empanadas.webp",
       },
       {
         name: "Provoleta al hierro",
         detail: "Queso provolone, oreganato y oliva",
         image:
-          "/provoleta.jpg",
+          "/provoleta.webp",
       },
     ],
   },
@@ -25,13 +25,13 @@ export const menuSections = [
         name: "Parrillada Libre",
         detail: "Cortes varios, achuras y guarnicion campestre",
         image:
-          "parrillada.jpeg",
+          "parrillada.webp",
       },
       {
         name: "Achuras",
         detail: "Morcilla, chinchulines, riñones y mollejas",
         image:
-          "chinchu.jpeg",
+          "chinchu.webp",
       },
     ],
   },
@@ -43,13 +43,13 @@ export const menuSections = [
         name: "Ravioles caseros",
         detail: "Relleno de verdura y ricota, salsa fileto",
         image:
-          "ravioles.jpg",
+          "ravioles.webp",
       },
       {
         name: "Sorrentinos",
         detail: "Jamon y queso, crema suave de hongos",
         image:
-          "sorrentinos.jpg",
+          "sorrentinos.webp",
       },
     ],
   },
@@ -61,13 +61,13 @@ export const menuSections = [
         name: "Tiramisú",
         detail: "Clásico italiano con bizcochos, café y crema de mascarpone",
         image:
-          "tiramisu.jpeg",
+          "tiramisu.webp",
       },
       {
         name: "Don Pedro",
         detail: "Helado de crema americana, whisky y nueces",
         image:
-          "donpedro.jpg",
+          "donpedro.webp",
       },
     ],
   },

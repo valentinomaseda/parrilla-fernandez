@@ -82,7 +82,7 @@ export default function Navbar() {
             aria-label="Ir al inicio"
           >
             <img
-              src="/logo.png"
+              src="/logo.webp"
               alt="Parrilla Fernandez"
               className="h-14 w-auto sm:h-16 transition-transform duration-500 group-hover:scale-110"
             />
