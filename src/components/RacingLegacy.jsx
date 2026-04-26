@@ -1,6 +1,8 @@
 import { useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Trophy, Flag, Play, MoveRight } from "lucide-react";
+import { getPosterPathFromVideo } from "../utils/media";
+import DeferredVideo from "./DeferredVideo";
 
 const pilotProfiles = [
   {
@@ -490,9 +492,10 @@ export default function RacingLegacy() {
                 <div className="h-full w-full relative">
                   {item.type === "video" ? (
                     <>
-                      <video
+                      <DeferredVideo
                         src={item.media}
-                        poster={item.poster}
+                        poster={item.poster || getPosterPathFromVideo(item.media)}
+                        preload="none"
                         className={`${item.isVertical ? "h-full w-full object-contain" : "h-full w-full object-cover"} grayscale-[0.5] group-hover:grayscale-0 transition-all duration-700`}
                         muted
                         loop
@@ -567,6 +570,10 @@ export default function RacingLegacy() {
               {selectedMedia.type === "video" ? (
                 <video
                   src={selectedMedia.media}
+                  poster={
+                    selectedMedia.poster ||
+                    getPosterPathFromVideo(selectedMedia.media)
+                  }
                   className="w-full h-auto max-h-[85vh] object-contain"
                   controls
                   autoPlay

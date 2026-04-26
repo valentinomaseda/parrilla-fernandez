@@ -1,7 +1,10 @@
 import { motion } from "framer-motion";
 import { Flame } from "lucide-react";
+import { getPosterPathFromVideo } from "../utils/media";
+import DeferredVideo from "./DeferredVideo";
 
 const aboutVideo = "/Parri Historia 3.mp4";
+const aboutPoster = getPosterPathFromVideo(aboutVideo);
 
 export default function AboutSection() {
   return (
@@ -62,8 +65,10 @@ export default function AboutSection() {
           >
             {/* Contenedor del video con estilo retrato/editorial */}
             <div className="relative aspect-[4/5] sm:aspect-[3/4] lg:aspect-[4/5] overflow-hidden rounded-[2.5rem] shadow-2xl shadow-wood-dark/20 border border-wood-dark/10 group">
-              <video
+              <DeferredVideo
                 src={aboutVideo}
+                poster={aboutPoster}
+                preload="none"
                 className="h-full w-full object-cover sepia-[0.15] saturate-[1.1] transition-transform duration-1000 group-hover:scale-105"
                 autoPlay
                 loop

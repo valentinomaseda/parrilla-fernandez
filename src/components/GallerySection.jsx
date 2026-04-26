@@ -2,6 +2,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import SectionHeading from "./SectionHeading";
 import { useState } from "react";
 import { X } from "lucide-react";
+import { getPosterPathFromVideo, isVideoMediaPath } from "../utils/media";
+import DeferredVideo from "./DeferredVideo";
 
 const galleryItems = [
   {
@@ -84,8 +86,8 @@ export default function GallerySection() {
 
       <div className="grid auto-rows-[220px] grid-cols-1 gap-4 sm:grid-cols-3">
         {galleryItems.map((item, index) => {
-          const isVideo =
-            item.media && item.media.toLowerCase().endsWith(".mp4");
+          const isVideo = isVideoMediaPath(item.media);
+          const poster = item.poster || getPosterPathFromVideo(item.media);
           return (
             <motion.figure
               key={`${item.title}-${index}`}
@@ -97,10 +99,10 @@ export default function GallerySection() {
               onClick={() => handleImageClick(item.media, item.title)}
             >
               {isVideo ? (
-                <video
+                <DeferredVideo
                   src={item.media}
-                  poster={item.poster}
-                  loading="lazy"
+                  poster={poster}
+                  preload="none"
                   className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                   autoPlay
                   loop
@@ -151,9 +153,10 @@ export default function GallerySection() {
               >
                 <X className="h-4 w-4" />
               </button>
-              {selectedImage.toLowerCase().endsWith(".mp4") ? (
+              {isVideoMediaPath(selectedImage) ? (
                 <video
                   src={selectedImage}
+                  poster={getPosterPathFromVideo(selectedImage)}
                   className="w-full rounded-2xl object-contain shadow-2xl"
                   style={{ maxHeight: "75vh" }}
                   controls
