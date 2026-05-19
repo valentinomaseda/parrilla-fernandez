@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+// script para convertir imagenes .jpg/.jpeg/.png a .webp dentro de la carpeta public
 
 import fs from 'node:fs/promises';
 import path from 'node:path';

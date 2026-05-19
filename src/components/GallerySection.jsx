@@ -59,6 +59,16 @@ const galleryItems = [
   },
 ];
 
+const wineItems = [
+  { title: "Escorihuela Gascón", media: "/gascon1.webp", span: "sm:col-span-2 sm:row-span-2" },
+  { title: "Nuevas incorporaciones", media: "/gascon2.webp", span: "sm:col-span-1" },
+  { title: "Brindis ideal", media: "/gascon3.webp", span: "sm:col-span-1" },
+  { title: "En su punto justo", media: "/gascon4.webp", span: "sm:col-span-1" },
+  { title: "Maridaje perfecto", media: "/gascon5.webp", span: "sm:col-span-1" },
+  { title: "Detalles que cuentan", media: "/gascon6.webp", span: "sm:col-span-1" },
+  { title: "Bodega exclusiva", media: "/gascon7.webp", span: "sm:col-span-1" },
+];
+
 export default function GallerySection() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedTitle, setSelectedTitle] = useState("");
@@ -90,7 +100,7 @@ export default function GallerySection() {
           const poster = item.poster || getPosterPathFromVideo(item.media);
           return (
             <motion.figure
-              key={`${item.title}-${index}`}
+              key={`gallery-${item.title}-${index}`}
               initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.25 }}
@@ -125,6 +135,56 @@ export default function GallerySection() {
             </motion.figure>
           );
         })}
+      </div>
+
+      <div className="mt-20">
+        <SectionHeading
+          eyebrow="Nueva Carta"
+          title="Nuestros Vinos"
+          subtitle="Descubrí nuestra exclusiva selección de vinos Escorihuela Gascón, el maridaje perfecto para nuestras carnes."
+        />
+        <div className="grid auto-rows-[220px] grid-cols-1 gap-4 sm:grid-cols-3">
+          {wineItems.map((item, index) => {
+            const isVideo = isVideoMediaPath(item.media);
+            const poster = item.poster || getPosterPathFromVideo(item.media);
+            return (
+              <motion.figure
+                key={`wine-${item.title}-${index}`}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.25 }}
+                transition={{ duration: 0.45, delay: index * 0.06 }}
+                className={`group relative cursor-pointer overflow-hidden rounded-2xl border border-brand-cream/20 ${item.span}`}
+                onClick={() => handleImageClick(item.media, item.title)}
+              >
+                {isVideo ? (
+                  <DeferredVideo
+                    src={item.media}
+                    poster={poster}
+                    preload="none"
+                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                  />
+                ) : (
+                  <img
+                    src={item.media}
+                    alt={item.title}
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                  />
+                )}
+
+                <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent px-4 py-3 text-sm text-brand-cream">
+                  {item.title}
+                </figcaption>
+              </motion.figure>
+            );
+          })}
+        </div>
       </div>
 
       {/* Lightbox */}
