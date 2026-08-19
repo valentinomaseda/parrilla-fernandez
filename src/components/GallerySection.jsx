@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import SectionHeading from "./SectionHeading";
 import { useState } from "react";
-import { X } from "lucide-react";
+import { X, MoveRight } from "lucide-react";
 import { getPosterPathFromVideo, isVideoMediaPath } from "../utils/media";
 import DeferredVideo from "./DeferredVideo";
 
@@ -93,8 +93,17 @@ export default function GallerySection() {
         title="Inmersión visual"
         subtitle="Fuego real, madera, humo y detalles que cuentan por qué esta parada es leyenda en Ruta 51."
       />
+      <motion.div
+        className="flex items-center justify-end gap-2 text-stone-500 sm:hidden -mt-6 mb-3"
+        animate={{ x: [0, 6, 0] }}
+        transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
+      >
+        <span className="text-[10px] uppercase tracking-widest font-bold">Desliza</span>
+        <MoveRight size={14} className="text-brand-red" />
+      </motion.div>
 
-      <div className="grid auto-rows-[220px] grid-cols-1 gap-4 sm:grid-cols-3">
+      {/* Mobile: carrusel — sm+: grid */}
+      <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 scrollbar-hide sm:grid sm:auto-rows-[220px] sm:grid-cols-3 sm:pb-0 sm:overflow-visible">
         {galleryItems.map((item, index) => {
           const isVideo = isVideoMediaPath(item.media);
           const poster = item.poster || getPosterPathFromVideo(item.media);
@@ -105,7 +114,7 @@ export default function GallerySection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.25 }}
               transition={{ duration: 0.45, delay: index * 0.06 }}
-              className={`group relative cursor-pointer overflow-hidden rounded-2xl border border-brand-cream/20 ${item.span}`}
+              className={`group relative cursor-pointer overflow-hidden rounded-2xl border border-brand-cream/20 flex-shrink-0 w-[80vw] h-[220px] snap-center sm:w-auto sm:h-auto ${item.span}`}
               onClick={() => handleImageClick(item.media, item.title)}
             >
               {isVideo ? (
@@ -128,13 +137,18 @@ export default function GallerySection() {
                   className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                 />
               )}
-
               <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent px-4 py-3 text-sm text-brand-cream">
                 {item.title}
               </figcaption>
             </motion.figure>
           );
         })}
+      </div>
+      {/* Dots galería — solo mobile */}
+      <div className="flex justify-center gap-1.5 mt-3 sm:hidden">
+        {galleryItems.map((_, i) => (
+          <div key={`gdot-${i}`} className="w-1.5 h-1.5 rounded-full bg-stone-600" />
+        ))}
       </div>
 
       <div className="mt-20">
@@ -143,7 +157,17 @@ export default function GallerySection() {
           title="Nuestros Vinos"
           subtitle="Descubrí nuestra exclusiva selección de vinos Escorihuela Gascón, el maridaje perfecto para nuestras carnes."
         />
-        <div className="grid auto-rows-[220px] grid-cols-1 gap-4 sm:grid-cols-3">
+        <motion.div
+          className="flex items-center justify-end gap-2 text-stone-500 sm:hidden -mt-6 mb-3"
+          animate={{ x: [0, 6, 0] }}
+          transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
+        >
+          <span className="text-[10px] uppercase tracking-widest font-bold">Desliza</span>
+          <MoveRight size={14} className="text-brand-red" />
+        </motion.div>
+
+        {/* Mobile: carrusel — sm+: grid */}
+        <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 scrollbar-hide sm:grid sm:auto-rows-[220px] sm:grid-cols-3 sm:pb-0 sm:overflow-visible">
           {wineItems.map((item, index) => {
             const isVideo = isVideoMediaPath(item.media);
             const poster = item.poster || getPosterPathFromVideo(item.media);
@@ -154,7 +178,7 @@ export default function GallerySection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.25 }}
                 transition={{ duration: 0.45, delay: index * 0.06 }}
-                className={`group relative cursor-pointer overflow-hidden rounded-2xl border border-brand-cream/20 ${item.span}`}
+                className={`group relative cursor-pointer overflow-hidden rounded-2xl border border-brand-cream/20 flex-shrink-0 w-[80vw] h-[220px] snap-center sm:w-auto sm:h-auto ${item.span}`}
                 onClick={() => handleImageClick(item.media, item.title)}
               >
                 {isVideo ? (
@@ -177,13 +201,18 @@ export default function GallerySection() {
                     className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                   />
                 )}
-
                 <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent px-4 py-3 text-sm text-brand-cream">
                   {item.title}
                 </figcaption>
               </motion.figure>
             );
           })}
+        </div>
+        {/* Dots vinos — solo mobile */}
+        <div className="flex justify-center gap-1.5 mt-3 sm:hidden">
+          {wineItems.map((_, i) => (
+            <div key={`wdot-${i}`} className="w-1.5 h-1.5 rounded-full bg-stone-600" />
+          ))}
         </div>
       </div>
 

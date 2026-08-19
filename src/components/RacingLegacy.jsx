@@ -162,6 +162,20 @@ const wallItems = [
     isVertical: true,
   },
   {
+    id: 22,
+    title: "",
+    media: "/video-canapa.mp4",
+    type: "video",
+    isVertical: true,
+  },
+  {
+    id: 23,
+    title: "",
+    media: "/video-canapa2.mp4",
+    type: "video",
+    isVertical: true,
+  },
+  {
     id: 11,
     title: "",
     media: "/copa2.webp",
@@ -383,11 +397,10 @@ export default function RacingLegacy() {
                 <button
                   key={pilot.id}
                   onClick={() => setActivePilot(pilot)}
-                  className={`flex flex-shrink-0 items-center gap-4 p-2 pr-6 rounded-2xl border-2 transition-all duration-300 snap-center transform-gpu origin-center lg:origin-left ${
-                    activePilot.id === pilot.id
+                  className={`flex flex-shrink-0 items-center gap-4 p-2 pr-6 rounded-2xl border-2 transition-all duration-300 snap-center transform-gpu origin-center lg:origin-left ${activePilot.id === pilot.id
                       ? "border-brand-red bg-brand-red/10 shadow-[0_10px_30px_rgba(140,45,43,0.3)] scale-105 text-brand-cream z-30"
                       : "border-white/10 bg-white/5 opacity-60 hover:opacity-100 hover:border-white/20"
-                  }`}
+                    }`}
                 >
                   <div className="h-12 w-12 overflow-hidden rounded-xl border border-white/20 pointer-events-none shrink-0">
                     <img
@@ -470,11 +483,24 @@ export default function RacingLegacy() {
 
         {/* FILA 2: Muro de Recuerdos */}
         <div className="pt-16 border-t border-white/5">
-          <h4 className="text-[10px] font-black uppercase tracking-[0.5em] text-stone-500 mb-10 text-center lg:text-left">
-            Archivo Visual de Boxes
-          </h4>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-[300px]">
-            {visibleWallItems.map((item, i) => (
+          <div className="flex items-center justify-between mb-10">
+            <h4 className="text-[10px] font-black uppercase tracking-[0.5em] text-stone-500 text-center lg:text-left">
+              Archivo Visual de Boxes
+            </h4>
+            {/* Hint de swipe — solo mobile */}
+            <motion.div
+              className="flex items-center gap-2 text-stone-600 md:hidden"
+              animate={{ x: [0, 6, 0] }}
+              transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
+            >
+              <span className="text-[10px] uppercase tracking-widest font-bold">Desliza</span>
+              <MoveRight size={14} className="text-brand-red" />
+            </motion.div>
+          </div>
+
+          {/* Mobile: carrusel — Desktop: grid */}
+          <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-6 scrollbar-hide md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-6 md:auto-rows-[300px] md:pb-0 md:overflow-visible">
+            {wallItems.map((item, i) => (
               <motion.div
                 key={`${item.id}-${i}`}
                 ref={(element) => {
@@ -483,11 +509,10 @@ export default function RacingLegacy() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: showAllWallItems ? 0 : i * 0.1 }}
+                transition={{ delay: i * 0.05 }}
                 onClick={() => setSelectedMedia(item)}
-                className={`group relative cursor-pointer overflow-hidden rounded-[2.5rem] border border-white/5 bg-stone-900 shadow-2xl transition-all duration-500 hover:border-brand-red/40 ${
-                  item.isVertical ? "lg:row-span-2 lg:col-span-1" : ""
-                }`}
+                className={`group relative cursor-pointer overflow-hidden rounded-[2.5rem] border border-white/5 bg-stone-900 shadow-2xl transition-all duration-500 hover:border-brand-red/40 flex-shrink-0 w-[82vw] h-[300px] snap-center md:w-auto md:h-auto md:flex-shrink-0 ${item.isVertical ? "lg:row-span-2 lg:col-span-1" : ""
+                  }`}
               >
                 <div className="h-full w-full relative">
                   {item.type === "video" ? (
@@ -525,8 +550,20 @@ export default function RacingLegacy() {
               </motion.div>
             ))}
           </div>
+
+          {/* Dots del carrusel — solo mobile */}
+          <div className="flex justify-center gap-1.5 mt-4 md:hidden">
+            {wallItems.map((item, i) => (
+              <div
+                key={`dot-${item.id}-${i}`}
+                className="w-1.5 h-1.5 rounded-full bg-stone-600"
+              />
+            ))}
+          </div>
+
+          {/* Botón Ver más/menos — solo desktop */}
           {hiddenWallItemsCount > 0 && (
-            <div className="mt-10 flex justify-center lg:justify-start">
+            <div className="hidden md:flex mt-10 justify-center lg:justify-start">
               <button
                 onClick={handleToggleWallItems}
                 className="rounded-2xl border border-white/15 bg-white/5 px-6 py-3 text-xs font-black uppercase tracking-[0.2em] text-stone-200 transition-all duration-300 hover:border-brand-red/50 hover:bg-brand-red/10 hover:text-brand-cream"
@@ -554,11 +591,10 @@ export default function RacingLegacy() {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              className={`relative bg-stone-900 rounded-[3rem] overflow-hidden shadow-2xl border border-white/10 ${
-                selectedMedia.isVertical
+              className={`relative bg-stone-900 rounded-[3rem] overflow-hidden shadow-2xl border border-white/10 ${selectedMedia.isVertical
                   ? "max-w-md w-full"
                   : "max-w-6xl w-full"
-              }`}
+                }`}
               onClick={(e) => e.stopPropagation()}
             >
               <button
